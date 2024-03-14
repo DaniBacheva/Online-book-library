@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Karla&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Infant&display=swap");
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font: 16px/1.1 'Cormorant Infant'
+}
+
+
+body {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1 1 auto;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+p {
+    font: 15px/1.5 Karla
+}
+
+.container {
+    max-width: 70em;
+    margin: 0 auto;
+}
