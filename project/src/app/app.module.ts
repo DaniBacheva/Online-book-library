@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { NewBookComponent } from './books/new-book/new-book.component';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -16,9 +17,10 @@ import { NewBookComponent } from './books/new-book/new-book.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    UserModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
