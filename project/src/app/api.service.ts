@@ -14,10 +14,9 @@ export class ApiService {
 
 
   getAllBooks () {
-    const URL= 'http://localhost:3030/jsonstore'
-    return this.http.get<Book>(`${URL}/teams`)
-
-    
+    const URL= 'http://localhost:3030/data/books'
+    return this.http.get<any>(URL)
+   
   }
 
   getOneBook (id:string){
