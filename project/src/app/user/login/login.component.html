@@ -5,16 +5,21 @@
             <div class="media">
                 <img src="/assets/cover.jpg">
             </div>
-            <div class="login-form">
+            <div class="login-form" >
                 <h1>Login</h1>
-                <form action="#">
+                <form #form=ngForm (ngSubmit)="login(form)">
                     <label>Email</label>
-                    <input type="text" placeholder="Email.." name="">
+                    <input type="text" placeholder="Email.." name="email" id="email"
+                    ngModel required 
+                    #inputEmail="ngModel">
+
                     <label>Password</label>
-                    <input type="password" placeholder="Password.." name="">
+                    <input type="password" placeholder="Password.." name="password" id="password"
+                    ngModel required #inputPassword="ngModel" >
+
                     <input type="submit" value="Submit">
                 </form>
-                <p>Not have an account? <a href="#">Register here</a></p>
+                <p>Not have an account? <a routerLink="/auth/register">Register here</a></p>
             </div>
         </div>
 
