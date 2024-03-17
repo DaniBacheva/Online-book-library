@@ -6,15 +6,28 @@
    
             <div class="register-form">
                 <h1>Register</h1>
-                <form action="#">
+                <form [formGroup]="form" (ngSubmit)="register()">
+
                     <label>Username</label>
-                    <input type="text" placeholder="Username.." name="">
+                    <input type="text" placeholder="Username.." name="username"
+                    formControlName="username">
+
                     <label>Email</label>
-                    <input type="text" placeholder="Email.." name="">
-                    <label>Password</label>
-                    <input type="password" placeholder="Password.." name="">
-                    <label>Confirm Password</label>
-                    <input type="password" placeholder="Confirm Password.." name="">
+                    <input type="text" placeholder="Email.." name="email"
+                    formControlName="email">
+                    
+
+                    <ng-container formGroupName="passGroup">
+
+                        <label>Password</label>
+                        <input type="password" placeholder="Password.." name="password"
+                        formControlName="password">
+
+                        <label>Confirm Password</label>
+                        <input type="password" placeholder="Confirm Password.." name="rePassword"
+                        formControlName="rePassword">
+                    </ng-container>
+                    
                     <input type="submit" value="Submit">
                 </form>
                 <p>Already have an account? <a href="#">Login here</a></p>
