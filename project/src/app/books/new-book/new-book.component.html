@@ -2,28 +2,43 @@
     <div class="container">
         <div class="add-info">
             <h2>Add a book</h2>
-            <form>
+            <form #form="ngForm"  (ngSubmit)="newBookHandler(form)">
                 <label>Title:</label>
-                <input name="" type="text" id="title">
+                <input name="title" type="text" 
+                id="title" 
+                ngModel required
+                #inputTitle="ngModel">
 
                 <label>Author:</label>
-                <input name="" type="text" id="author">
+                <input name="author" type="text" 
+                id="author" ngModel required
+                #inputAutor="ngModel">
 
                 <label>Genre:</label>
-                <input name="" type="text" id="genre">
+                <input name="genre" type="text"
+                 id="genre" ngModel required
+                 #inputGenre="ngModel">
                 
                 <label>Pages:</label>
-                <input name="" type="number" id="pages">
+                <input name="pages" type="number" 
+                id="pages" ngModel required
+                #inputPages="ngModel">
 
                 <label>Image:</label>
-                <input name="" type="text" id="image" placeholder="http://...">
+                <input name="imageUrl" type="text"
+                 id="image" placeholder="http://..."
+                 ngModel required
+                #inputImageUrl="ngModel">
 
                 <label>More info:</label>
-                <textarea id="content" name=""></textarea>
+                <textarea id="content" name="moreInfo"
+                ngModel required
+                #inputMoreInfo="ngModel"
+                ></textarea>
 
-                <input type="submit" id="btn" value="Add">
+                <button type="submit" id="btn" value="Add">Add</button>
             </form>
         </div>
     </div>
-</section>-->
+</section>
 

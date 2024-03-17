@@ -47,11 +47,11 @@
     resize: none;
 }
 
-.add-book .add-info input[type="submit"] {
+.add-book .add-info button[type="submit"] {
     width: 21em;
     height: 2em;
     margin-top: 2em;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     margin-bottom: 1.5em;
 }

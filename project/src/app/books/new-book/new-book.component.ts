@@ -1,4 +1,8 @@
+
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ApiService } from 'src/app/api.service';
 
 @Component({
   selector: 'app-new-book',
@@ -7,4 +11,19 @@ import { Component } from '@angular/core';
 })
 export class NewBookComponent {
 
+  constructor(private apiService: ApiService, private router: Router) { }
+
+  newBookHandler(form: NgForm): void {
+    console.log(form.value)
+
+    if (form.invalid) {
+      return
+    }
+
+    const { title, author, genre, pages, imageUrl, moreInfo } = form.value;
+  //  this.apiService.createBook(title, author, genre, pages, imageUrl, moreInfo).subscribe(() => {
+ //  this.router.navigate(['/books'])
+ //  })
+
+  }
 }
