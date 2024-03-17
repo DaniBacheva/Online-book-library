@@ -1,12 +1,14 @@
-
 footer {
-    margin-top: auto;
+    margin-top: 1em;
+    padding:0.7em 0;
     background-color: #aaa;
-    padding: 0.7em 0;
-    text-align: center;
     position: absolute;
     bottom: 0;
     width: 98%;
+    bottom: 0;
 
+}
 
+footer p {
+    text-align: center;
 }

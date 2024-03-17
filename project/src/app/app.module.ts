@@ -8,6 +8,8 @@ import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { NewBookComponent } from './books/new-book/new-book.component';
 import { UserModule } from './user/user.module';
+import { BooksRoutingModule } from './books/books-routing.module';
+import { BooksModule } from './books/books.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { UserModule } from './user/user.module';
     CoreModule,
     SharedModule,
     UserModule,
+    BooksModule,
     AppRoutingModule,
   ],
   providers: [],
