@@ -25,7 +25,6 @@ export class RegisterComponent {
     
   })
 
-
   constructor (private fb: FormBuilder, private userService:UserService,
     private router:Router) {}
 

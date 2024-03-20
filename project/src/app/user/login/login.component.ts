@@ -9,16 +9,17 @@ import { UserService } from '../user.service';
 })
 export class LoginComponent {
 
-constructor ( private userService: UserService) {}
+  constructor(private userService: UserService) { }
 
-  login ( form: NgForm) : void {
-    if (form.invalid){
+  login(form: NgForm): void {
+    if (form.invalid) {
+      console.log('Form is invalid')
       return;
     }
 
-    const {email, password} = form.value;
-  //  this.userService.login (email, password).subscribe (()=>
-    console.log(form.value)
-  //  )
+    const { email, password } = form.value;
+    this.userService.login(email, password).subscribe(() =>
+      console.log(form.value)
+    )
   }
 }

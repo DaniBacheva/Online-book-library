@@ -6,6 +6,7 @@ export interface Book {
     imageUrl: string,
     moreInfo:string,
     _id: string,
-    posts: any
+    posts: [],
+    subscribers:[]
 
 }

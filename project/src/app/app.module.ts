@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -17,14 +17,13 @@ import { appInterceptorProvider } from './app.interceptor';
   declarations: [
     AppComponent,
     HomeComponent,
-   
+
   ],
   imports: [
     BrowserModule,
     CoreModule,
     SharedModule,
     HttpClientModule,
-    UserModule,
     BooksModule,
     AppRoutingModule,
   ],

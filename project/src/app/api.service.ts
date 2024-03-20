@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Book} from './types/book'
+import { environment } from '../environments/environment.development';
 
 
 @Injectable({
@@ -14,8 +15,8 @@ export class ApiService {
 
 
   getAllBooks () {
-    const URL= 'http://localhost:3030/data/books'
-    return this.http.get<any>(URL)
+    const { apiUrl } = environment;
+    return this.http.get<Book>(`${apiUrl}/data/books`)
    
   }
 
