@@ -9,14 +9,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./book-list.component.css']
 })
 export class BookListComponent implements OnInit{
-  books: Book[] | null = [];
+  booksList: Book[] | null = null;
 
   constructor (private apiService: ApiService,
     private router: Router ) {}
 
     ngOnInit(): void {
-      this.apiService.getAllBooks().subscribe((books) => {
-        console.log(books);
+      this.apiService.getAllBooks().subscribe( {
+        next:(books) => {
+          this.booksList = books;
+          console.log(books)
+        },
+        error: (err)=> {
+           console.log(err);
+        }
+       
       })
     }
 
