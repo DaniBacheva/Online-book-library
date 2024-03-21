@@ -12,15 +12,13 @@ export class AppInterceptor implements HttpInterceptor {
     ): Observable<HttpEvent<any>> {
 
         const accessToken = localStorage.getItem('assessToken')
-
         if (req.url.startsWith('http://localhost:3030') && accessToken) {
             req = req.clone({
                 setHeaders: {
-                    "X-Authorixation": accessToken
+                    "X-Authorization": accessToken
                 }
             });
         }
-
         if (!req.headers.has('Content-Type')) {
             req = req.clone({
                 setHeaders: {
@@ -28,7 +26,6 @@ export class AppInterceptor implements HttpInterceptor {
                 }
             }); 
         }
-
         return next.handle(req)
     }
 }

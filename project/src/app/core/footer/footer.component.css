@@ -2,7 +2,7 @@ footer {
     margin-top: 1em;
     padding:0.7em 0;
     background-color: #aaa;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 98%;
     bottom: 0;

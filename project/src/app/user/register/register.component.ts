@@ -36,9 +36,13 @@ export class RegisterComponent {
       const {
         username, 
         email, 
-        passGroup: {passwordMatchValidator, rePassword}={}
+        passGroup: {password, rePassword}={}
     } = this.form.value;
 
     console.log(this.form.value)
-    }
+    this.userService.register( email!, username!, password).subscribe(() =>{
+    console.log(this.form.value);
+    this.router.navigate(['/books'])
+    })
+  }
 }
