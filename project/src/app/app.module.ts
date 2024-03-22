@@ -12,11 +12,13 @@ import { HomeComponent } from './home/home.component';
 import { UserModule } from './user/user.module';
 import { BooksModule } from './books/books.module';
 import { appInterceptorProvider } from './app.interceptor';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    NotFoundComponent,
 
   ],
   imports: [

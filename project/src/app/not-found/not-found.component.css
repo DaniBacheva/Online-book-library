@@ -1,0 +1,7 @@
+.not-found {
+    display: flex;
+}
+
+.not-found .media {
+    flex: 0 0 55%;
+}

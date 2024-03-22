@@ -1,16 +1,20 @@
-section .add-book {
+ .add-book .container{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 1em;
+   
 }
 
-section .add-book .media {
-    flex: 0 0 45%;
+.add-book .container .media {
+    flex: 0 0 55%;
 }
 
-.add-book .add-info {
+.add-book .container .add-book {
+    flex: 0 0 55%;
+}
+
+.container .add-info {
     color: black;
     width: 23em;
     height: auto;

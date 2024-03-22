@@ -36,4 +36,5 @@ header nav li:last-child {
     text-transform: uppercase;
     color: white;
     padding: 0 0.5em;
+    cursor: pointer;
 }

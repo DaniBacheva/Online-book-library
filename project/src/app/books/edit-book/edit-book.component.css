@@ -1,4 +1,4 @@
-section .edit-book {
+.edit-book .container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -6,8 +6,8 @@ section .edit-book {
     gap: 1em;
 }
 
-section .edit-book .media {
-    flex: 0 0 45%;
+ .edit-book .container .media {
+    flex: 0 0 55%;
 }
 
 .edit-book .edit-info {
