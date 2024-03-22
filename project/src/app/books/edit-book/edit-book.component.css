@@ -1,0 +1,69 @@
+section .edit-book {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+}
+
+section .edit-book .media {
+    flex: 0 0 45%;
+}
+
+.edit-book .edit-info {
+    color: black;
+    width: 23em;
+    height: auto;
+    margin: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    background-color: #ffeae7c6;
+    border: 1px solid black;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.edit-book .edit-info h2 {
+    text-align: center;
+    padding-top: 1em;
+    color: black;
+}
+
+.edit-book .edit-info form {
+    width: 19em;
+    margin-left: 1.2em;
+}
+
+.edit-book .edit-info form label {
+    display: flex;
+    margin-top: 1em;
+    margin-bottom: 0.3em;
+}
+
+.edit-book .edit-info form input,
+.edit-book .edit-info form textarea,
+.edit-book .edit-info input[type="submit"] {
+    width: 23em;
+    height: 1.8em;
+    padding-left: 0.6em;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 0.3em;
+    outline: none;
+    background-color: whitesmoke;
+}
+
+
+.edit-book .edit-info form textarea {
+    height: 8em;
+    resize: none;
+}
+
+.edit-book .edit-info button[type="submit"] {
+    width: 21em;
+    height: 2em;
+    margin-top: 2em;
+    background-color: white;
+    color: black;
+    margin-bottom: 1.5em;
+}

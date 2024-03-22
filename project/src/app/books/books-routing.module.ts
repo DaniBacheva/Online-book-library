@@ -11,16 +11,20 @@ const routes: Routes = [
         path: 'books',
         children: [
             { path: '', pathMatch: 'full', component: BookListComponent },
-            { path: ':bookId', component: CurrentBookComponent }
+            {
+                path: ':bookId',
+                children: [
+                    { path: '', pathMatch: 'full', component: CurrentBookComponent },
+                    { path: ':edit-book', component: EditBookComponent },
+                   // { path: ':delete-book', component:}, 
+                ]
+            }
         ],
     },
     {
         path: 'new-book', component: NewBookComponent
 
-    },
-    {
-        path: 'edit-book', component:EditBookComponent},
-
+    }
 ];
 
 @NgModule({
