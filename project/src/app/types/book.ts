@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export interface Book {
     title: string,
     author: string,
@@ -7,6 +9,7 @@ export interface Book {
     moreInfo:string,
     _id: string,
     posts: [],
-    subscribers:[]
+    subscribers:[],
+    creator:User
 
 }

@@ -2,13 +2,12 @@
     <div class="container">
         <h2>All Books</h2>
         <div class="catalog">
-           
-                <app-loader *ngIf="!booksList"></app-loader>
-        
-            <article *ngFor="let book of booksList"  class="catalog-card">
+
+            <app-loader *ngIf="!booksList"></app-loader>
+
+            <article *ngFor="let book of booksList" class="catalog-card">
                 <div class="media">
-                    <img
-                        src="{{book.imageUrl}}">
+                    <img src="{{book.imageUrl}}">
                 </div>
 
                 <div class="content">
@@ -19,12 +18,11 @@
                 </div>
 
                 <div class="button">
-                    <a href="#" class="btn-details">Details</a>
+                    <a [routerLink]="book._id" class="btn-details">Details</a>
                 </div>
 
             </article>
 
-                 </div>
+        </div>
     </div>
 </section>
-

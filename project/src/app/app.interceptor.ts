@@ -11,7 +11,9 @@ export class AppInterceptor implements HttpInterceptor {
         next: HttpHandler
     ): Observable<HttpEvent<any>> {
 
-        const accessToken = localStorage.getItem('assessToken')
+        const accessToken = localStorage.getItem('accessToken');
+        console.log(accessToken);
+
         if (req.url.startsWith('http://localhost:3030') && accessToken) {
             req = req.clone({
                 setHeaders: {

@@ -1,0 +1,90 @@
+.details .container {
+
+    display: flex;
+    gap: 2em
+}
+
+.details .content {
+    flex: 1 1 60%;
+
+}
+
+.details .posts {
+    flex: 1 1 30%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.mainInfo {
+    display: flex;
+    gap: 3em;
+    padding-top: 2em;
+}
+
+.media-details {
+    padding: 1em;
+    border: 1px solid black;
+}
+
+.media-details img {
+    height: 14em;
+    width: auto;
+}
+
+.details-info h2,
+.details-info h3,
+.details-info h4 {
+    padding-top: 1em;
+}
+
+.details-description {
+    padding: 2em 2em 1em 0;
+}
+
+.details-description .buttons {
+    padding-top: 2em;
+}
+
+.details-description .buttons a {
+    margin: 0 2em;
+    border: 1px solid black;
+    border-radius: 0.3em;
+    text-decoration: none;
+    background-color: rgb(180, 240, 178);
+    padding: 0.3em 1em;
+}
+
+.posts h3 {
+    padding-top: 1em;
+}
+
+.post-list {
+    border: 1px solid black;
+    border-radius: 0.5em;
+    background-color: #eee;
+    margin-top: 1em;
+}
+
+.post-list p {
+    padding: 1em;
+}
+
+.post-list .userId {
+    text-decoration: underline;
+}
+
+.add-comment {
+    padding: 1em 0 0.5em;
+}
+
+.add-comment input {
+      color: rgb(102, 80, 80);
+    margin: 0.5em 1em;
+    padding: 0.2em 1em;
+    border: 1px solid;
+    border-radius: 0.3em;
+    
+
+}
+

@@ -58,7 +58,9 @@ export class UserService implements OnDestroy {
 						_id: res._id,
 						accessToken: res.accessToken
 					});
+				
 				})
+				
 			);
 
 	}

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { Book } from './types/book'
 import { environment } from '../environments/environment.development';
+import { User } from './types/user';
 
 
 @Injectable({
@@ -19,15 +20,14 @@ export class ApiService {
     return this.http.get<Book[]>(`${apiUrl}/data/books`)
   }
 
-  getLatestBooks(limit?: number){
+  getLatestBooks(limit?: number){ // todo
     const { apiUrl } = environment;
     return this.http.get<Book[]>(`${apiUrl}/data/books`)
   }
 
-
-
   getOneBook(id: string) {
-
+    const { apiUrl } = environment;
+    return this.http.get<Book>(`${apiUrl}/data/books/${id}`)
 
   }
 
@@ -39,10 +39,20 @@ export class ApiService {
     imageUrl: string,
     moreInfo: string
   ) {
-    // const URL= 'http://localhost:3030/jsonstore'
-    //     return this.http.post<Book>(
-    //      `${URL}/books`, 
-    //    body:JSON.stringify(title, author, genre, pages, imageUrl, moreInfo))
+    const { apiUrl } = environment;
+      return this.http.post<{
+        title: string,
+        author: string,
+        genre: string,
+        pages: number,
+        imageUrl: string,
+        moreInfo:string,
+        _id: string,
+        posts: [],
+        subscribers:[],
+        creator:User
+    
+    }>(`${apiUrl}/data/books`, {title, author, genre, pages, imageUrl, moreInfo})
 
   }
 

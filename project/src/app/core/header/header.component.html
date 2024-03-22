@@ -12,9 +12,9 @@
             <li *ngIf="!isLoggedIn"><a routerLink="/auth/login">Login</a></li>
             <li *ngIf="!isLoggedIn"><a routerLink="/auth/register">Register</a></li>
       
-             <li *ngIf="isLoggedIn"><a routerLink="/new-book">Add new book</a></li> 
-             <li *ngIf="isLoggedIn"><a routerLink="/auth/profile">{{profileName}}` Profile</a></li>
-                        <li *ngIf="isLoggedIn" (click)="logout()">Logout</li>
+            <li *ngIf="isLoggedIn"><a routerLink="/new-book">Add new book</a></li> 
+            <li *ngIf="isLoggedIn"><a routerLink="/auth/profile">{{profileName}}` Profile</a></li>
+            <li *ngIf="isLoggedIn" (click)="logout()">Logout</li>
             
         </ul>
     </nav>

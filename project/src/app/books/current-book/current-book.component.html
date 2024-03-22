@@ -1,39 +1,64 @@
 <section class="details">
     <div class="container">
-        <div class="media-details">
-            <img src=".......">
+        <div class="content">
+            <div class="mainInfo">
+                <div class="media-details">
+                    <img src="{{book?.imageUrl}}">
+                </div>
+                <div class="details-info">
+                    <h2>Title: {{book?.title}}</h2>
+
+                    <h3>Author:{{book?.author}}</h3>
+                    <h3>Genre:{{book?.genre}}</h3>
+                    <h3>Pages: {{book?.pages}}</h3>
+                    <h3>Added by: {{book?.author}}</h3>
+                    <!--If there are users how downloaded it-->
+                    <h4>Downloaded by: {{book?.subscribers?.length}}</h4>
+
+                    <!-- If there are not
+                <h4>Nobody has downloaded this book yet</h4>-->
+                </div>
+            </div>
+            <div class="details-description">
+                <p>{{book?.moreInfo}}</p>
+
+                <div class="buttons">
+                    <!-- Only for registered user and creator of the book-->
+                    <a href="#">Edit</a>
+                    <a href="#">Delete</a>
+                    <!-- logged in user who has not downloaded the book yet-->
+                    <a href="#">Download</a>
+                    <!-- logged in user who has already downloaded the book
+                    <p class="downloaded">You've already downloaded this book!</p>-->
+                </div>
+
+            </div>
         </div>
-        <div class="details-info">
-            <h2>Title: QA</h2>
-
-            <h3>Author: l.k.keen</h3>
-            <h3>Genre:QA</h3>
-            <h3>Pages: 350</h3>
-            <h3>Added by: dani.....</h3>
 
 
-        </div>
-        <div class="details-description">
-            <p>course description</p>
-        </div>
-
-        If there are users how downloaded it
-        <h4>Signed By: cate.brown, nikolas.p</h4>
-
-        If there are not
-        <h4>Nobody has downloaded this book yet</h4>
+        <div class="posts">
+            <h3>Recent post:</h3>
+            <div class="post-list">
+                <p class="userId">Miro posted on <time>25.2</time></p>
+                <p><span><i class="fa-duotone fa-comment"></i></span>great book</p>
+            </div>
 
 
+            <!--<div class="footer">
+                <!-- <i class="fas fa-thumbs-up"></i>
+                <i class="fas fa-thumbs-down"></i>
+                <p><span>{{post.likes.length}}</span> likes</p>
+            </div>-->
 
-        <div class="buttons">
-            <!-- Only for registered user and creator of the course
-            <a href="#">Edit</a>
-            <a href="#">Delete</a>-->
-            <!-- logged in user who has not downloaded the book yet
-            <a href="#">Download</a>-->
-            <!-- logged in user who has already downloaded the book
-            <p class="downloaded">You've already downloaded this book!</p>
-        </div>-->
+            <div class="add-comment">
+                <p>What do you think?</p>
+                <div class="postText">
+                    <form>
+                        <textarea name="postText" id="comment" cols="50" rows="5"></textarea>
+                        <input type="submit" value="Post">
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </section>
