@@ -10,53 +10,29 @@
     <div class="container">
         <h2>Look at our latest books...</h2>
         <div class="lastest-books">
+            <div *ngFor="let book of booksList">
+                <div class="info">
 
-            <div class="info">
-                <div class="media">
-                    <img src="https://cdn.penguin.co.uk/dam-assets/books/9781408481967/9781408481967-jacket-large.jpg">
-                </div>
-                <div class="content">
-                    <h3 class="title">The Client</h3>
-                   <p class="author">Author: John Grisham</p>
-                    <p class="genre">Genre: Crime</p>
-                    <div class="more-info">
-                        <a href="#">More info</a>
+                    <div class="media">
+                        <img src="{{book.imageUrl}}">
                     </div>
-                </div>
-            </div>
-
-            <div class="info">
-                <div class="media">
-                    <img src="https://cdn.penguin.co.uk/dam-assets/books/9781408481967/9781408481967-jacket-large.jpg">
-                </div>
-                <div class="content">
-                    <h3 class="title">The Client</h3>
-                   <p class="author">Author: John Grisham</p>
-                    <p class="genre">Genre: Crime</p>
-                    <div class="more-info">
-                        <a href="#">More info</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="info">
-                <div class="media">
-                    <img src="https://cdn.penguin.co.uk/dam-assets/books/9781408481967/9781408481967-jacket-large.jpg">
-                </div>
-                <div class="content">
-                    <h3 class="title">The Client</h3>
-                   <p class="author">Author: John Grisham</p>
-                    <p class="genre">Genre: Crime</p>
-                    <div class="more-info">
-                        <a href="#">More info</a>
+                    <div class="content">
+                        <h3 class="title">{{book.title}}</h3>
+                        <p class="author"> {{book.author}}</p>
+                        <p class="genre">Genre:{{book.genre}}</p>
+                        <div class="more-info">
+                            <a [routerLink]="['/books', book._id]">More info</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-            <!--If there are still no course
-    <div class="no-books">
-        <h2>No books added yet.</h2>
     </div>
 
-</section> -->
+
+    <!--If there are still no course
+    <div class="no-books">
+        <h2>No books added yet.</h2>
+    </div> -->
+
+</section>
