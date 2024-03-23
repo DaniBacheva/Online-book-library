@@ -6,38 +6,32 @@
         
         <div class="edit-info">
             <h2>Edit the book</h2>
-            <form #form="ngForm"  >
+            <form [formGroup]="form"  (ngSubmit)="editBookHandler()">
                 <label>Title:</label>
                 <input name="title" type="text" 
                 id="title" 
-                ngModel required
-                #inputTitle="ngModel">
+                formControlName="title">
 
                 <label>Author:</label>
                 <input name="author" type="text" 
-                id="author" ngModel required
-                #inputAutor="ngModel">
+                id="author" formControlName="author">
 
                 <label>Genre:</label>
                 <input name="genre" type="text"
-                 id="genre" ngModel required
-                 #inputGenre="ngModel">
+                 id="genre" formControlName="genre">
                 
                 <label>Pages:</label>
                 <input name="pages" type="number" 
-                id="pages" ngModel required
-                #inputPages="ngModel">
+                id="pages" formControlName="pages">
 
                 <label>Image:</label>
                 <input name="imageUrl" type="text"
                  id="image" placeholder="http://..."
-                 ngModel required
-                #inputImageUrl="ngModel">
+                 formControlName="imageUrl">
 
                 <label>More info:</label>
                 <textarea id="content" name="moreInfo"
-                ngModel required
-                #inputMoreInfo="ngModel"
+                formControlName="moreInfo"
                 ></textarea>
 
                 <button type="submit" id="btn" value="Edit">Add</button>

@@ -56,6 +56,12 @@ export class ApiService {
 
   }
 
+  updateBook(bookData: Book, id:string
+    ) {
+      const { apiUrl } = environment;
+      return this.http.put<Book>(`${apiUrl}/data/books/${id}`, bookData)
+    }
+
   getLatestPost(limit: number) {
 
 

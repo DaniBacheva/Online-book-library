@@ -24,7 +24,7 @@
 
                 <div class="buttons">
                     <!-- Only for registered user and creator of the book-->
-                    <a [routerLink]="['/books/`${{book._id}`}/edit-book']">Edit</a>
+                    <a routerLink="/books/{{book?._id}}/edit">Edit</a>
                     <a href="#">Delete</a>
                     <!-- logged in user who has not downloaded the book yet-->
                     <a href="#">Download</a>
