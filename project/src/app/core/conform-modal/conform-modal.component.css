@@ -1,12 +1,19 @@
  .content {
-    flex: 1 1 60%;
+  padding: 5em 5em;
+ }
+.modal {
+    background-color: antiquewhite;
+}
 
+.modal h2 {
+    text-align: center;
+    padding-top: 1em;
 }
 
 .mainInfo {
     display: flex;
     gap: 3em;
-    padding-top: 2em;
+    padding:2em;
 }
 
 .media-details {
@@ -25,7 +32,7 @@
 }
 
 .buttons {
-    padding-top: 2em;
+    padding-top: 4em;
 }
 
 .buttons a {
@@ -35,4 +42,16 @@
     text-decoration: none;
     background-color: rgb(180, 240, 178);
     padding: 0.3em 1em;
+    color: black;
 }
+
+.buttons button {
+    margin: 0 2em;
+    border: 1px solid black;
+    border-radius: 0.3em;
+    text-decoration: none;
+    background-color: rgb(180, 240, 178);
+    padding: 0.5em 1em;
+    color: black;
+}
+

@@ -20,7 +20,7 @@ export class ApiService {
     return this.http.get<Book[]>(`${apiUrl}/data/books`)
   }
 
-  getLatestBooks(limit?: number){ // todo
+  getLatestBooks(limit?: number) { // todo
     const { apiUrl } = environment;
     return this.http.get<Book[]>(`${apiUrl}/data/books`)
   }
@@ -40,27 +40,32 @@ export class ApiService {
     moreInfo: string
   ) {
     const { apiUrl } = environment;
-      return this.http.post<{
-        title: string,
-        author: string,
-        genre: string,
-        pages: number,
-        imageUrl: string,
-        moreInfo:string,
-        _id: string,
-        posts: [],
-        subscribers:[],
-        creator:User
-    
-    }>(`${apiUrl}/data/books`, {title, author, genre, pages, imageUrl, moreInfo})
+    return this.http.post<{
+      title: string,
+      author: string,
+      genre: string,
+      pages: number,
+      imageUrl: string,
+      moreInfo: string,
+      _id: string,
+      posts: [],
+      subscribers: [],
+      creator: User
+
+    }>(`${apiUrl}/data/books`, { title, author, genre, pages, imageUrl, moreInfo })
 
   }
 
-  updateBook(bookData: Book, id:string
-    ) {
-      const { apiUrl } = environment;
-      return this.http.put<Book>(`${apiUrl}/data/books/${id}`, bookData)
-    }
+  updateBook(bookData: Book, id: string
+  ) {
+    const { apiUrl } = environment;
+    return this.http.put<Book>(`${apiUrl}/data/books/${id}`, bookData)
+  }
+
+  deleteBook (id: string) {
+    const { apiUrl } = environment;
+    return this.http.delete<Book>(`${apiUrl}/data/books/${id}`);
+  }
 
   getLatestPost(limit: number) {
 

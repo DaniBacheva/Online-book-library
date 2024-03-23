@@ -9,7 +9,6 @@ import { Book } from 'src/app/types/book';
   styleUrls: ['./current-book.component.css']
 })
 export class CurrentBookComponent implements OnInit{
-  isDeleteMode: boolean=false;
   book: Book | undefined ;
 
   constructor(
