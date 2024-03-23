@@ -1,0 +1,38 @@
+ .content {
+    flex: 1 1 60%;
+
+}
+
+.mainInfo {
+    display: flex;
+    gap: 3em;
+    padding-top: 2em;
+}
+
+.media-details {
+    padding: 1em;
+    border: 1px solid black;
+}
+
+.media-details img {
+    height: 14em;
+    width: auto;
+}
+
+.details-info h2,
+.details-info h3 {
+    padding-top: 1em;
+}
+
+.buttons {
+    padding-top: 2em;
+}
+
+.buttons a {
+    margin: 0 2em;
+    border: 1px solid black;
+    border-radius: 0.3em;
+    text-decoration: none;
+    background-color: rgb(180, 240, 178);
+    padding: 0.3em 1em;
+}

@@ -1,4 +1,5 @@
 <section class="details">
+
     <div class="container">
         <div class="content">
             <div class="mainInfo">
@@ -24,8 +25,8 @@
 
                 <div class="buttons">
                     <!-- Only for registered user and creator of the book-->
-                    <a routerLink="/books/{{book?._id}}/edit">Edit</a>
-                    <a href="#">Delete</a>
+                    <a routerLink="/books/{{book?._id}}/edit-book">Edit</a>
+                    <a routerLink="/books/{{book?._id}}/delete-book">Delete</a>
                     <!-- logged in user who has not downloaded the book yet-->
                     <a href="#">Download</a>
                     <!-- logged in user who has already downloaded the book
@@ -34,7 +35,6 @@
 
             </div>
         </div>
-
 
         <div class="posts">
             <h3>Recent post:</h3>
@@ -61,4 +61,5 @@
             </div>
         </div>
     </div>
+
 </section>

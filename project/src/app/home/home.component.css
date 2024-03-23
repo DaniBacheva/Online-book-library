@@ -9,7 +9,7 @@ section .home {
 }
 
 .hero-content .media {
-    width: 60em;
+    max-width: 55em;
     height: auto;
 }
 

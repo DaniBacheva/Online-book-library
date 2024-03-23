@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Book } from 'src/app/types/book';
 
@@ -12,7 +12,7 @@ import { Book } from 'src/app/types/book';
 })
 export class EditBookComponent implements OnInit {
 
-  bookDetails: Book | undefined
+  bookDetails: Book | undefined = undefined
 
   form = this.fb.group({
     title: ['', [Validators.required]],
@@ -25,7 +25,8 @@ export class EditBookComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private apiService: ApiService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.loadBookDetails()
@@ -38,36 +39,32 @@ export class EditBookComponent implements OnInit {
     this.apiService.getOneBook(id).subscribe({
       next: (bookData) => {
         this.bookDetails = bookData;
+        const { title, author, genre, pages, imageUrl, moreInfo } = bookData;
+        this.form.setValue({
+          title, author, genre, pages, imageUrl, moreInfo
+        })
         console.log(bookData)
       },
       error: (err) => {
         console.log(err);
       }
     })
-
-    //const { title, author, genre, pages, imageUrl, moreInfo } = this.bookDetails;
-
-     // this.form.setValue({
-        //title, author, genre, pages, imageUrl, moreInfo
-   //   })
-  //  }
-
-  }
+    }
 
   editBookHandler(): void {
-    if (this.form.invalid){
+    if (this.form.invalid) {
       return;
     }
     const id = this.activatedRoute.snapshot.params['bookId'];
     console.log(id)
-    const formData = {...this.form.value} as Book;
-  
+    const formData = { ...this.form.value } as Book;
 
-      this.apiService.updateBook(formData, id).subscribe(()=> console.log (this.bookDetails))
+
+    this.apiService.updateBook(formData, id).subscribe(() => {
+      console.log(formData);
+      this.router.navigate(['/books'])
+    })
   }
-
-
-
 
 };
 
