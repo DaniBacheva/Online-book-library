@@ -43,18 +43,13 @@
                 <p><span><i class="fa-duotone fa-comment"></i></span>great book</p>
             </div>
 
-
-            <!--<div class="footer">
-                <!-- <i class="fas fa-thumbs-up"></i>
-                <i class="fas fa-thumbs-down"></i>
-                <p><span>{{post.likes.length}}</span> likes</p>
-            </div>-->
-
             <div class="add-comment">
                 <p>What do you think?</p>
                 <div class="postText">
-                    <form>
-                        <textarea name="postText" id="comment" cols="50" rows="5"></textarea>
+                    <form #form="ngForm" (ngSubmit)="commentAdd(form)">
+                        <textarea name="text" id="comment" cols="50" rows="5" ngModel required #inputEmail="ngModel">
+                    </textarea>
+
                         <input type="submit" value="Post">
                     </form>
                 </div>

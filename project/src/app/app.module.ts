@@ -24,7 +24,7 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     BrowserModule,
-   CoreModule,
+    CoreModule,
     SharedModule,
     HttpClientModule,
     BooksModule,

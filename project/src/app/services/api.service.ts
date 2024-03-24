@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Book } from './types/book'
-import { environment } from '../environments/environment.development';
-import { User } from './types/user';
+import { Book } from '../types/book'
+import { environment } from '../../environments/environment.development';
+import { User } from '../types/user';
 
 
 @Injectable({
@@ -12,8 +12,6 @@ import { User } from './types/user';
 export class ApiService {
 
   constructor(private http: HttpClient) { }
-
-
 
   getAllBooks() {
     const { apiUrl } = environment;
@@ -62,17 +60,9 @@ export class ApiService {
     return this.http.put<Book>(`${apiUrl}/data/books/${id}`, bookData)
   }
 
-  deleteBook (id: string) {
+  deleteBook(id: string) {
     const { apiUrl } = environment;
     return this.http.delete<Book>(`${apiUrl}/data/books/${id}`);
   }
-
-  getLatestPost(limit: number) {
-
-
-  }
-
-
-
 
 }
