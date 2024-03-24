@@ -1,11 +1,15 @@
 import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable, Provider } from "@angular/core";
-import { Observable } from "rxjs";
+import { Router } from "@angular/router";
+import { Observable, catchError } from "rxjs";
+import { ErrorService } from "./core/error/error.service";
 
 const URL = "http://localhost://3030/users"
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
+    constructor (private router: Router,
+        private errorService: ErrorService){}
     intercept(
         req: HttpRequest<any>,
         next: HttpHandler
@@ -28,7 +32,20 @@ export class AppInterceptor implements HttpInterceptor {
                 }
             }); 
         }
-        return next.handle(req)
+        return next.handle(req)//.//pipe(
+        //    catchError((err)=> {
+        //        if (err.status === 401 || err.status === 404) {
+        //            this.router.navigate(['/auth/login'])
+
+       //         }
+        //         else {
+        //            this.errorService.setError(err);
+        //            this.router.navigate(['/error'])
+        //         }
+        //         return [err]
+        //    })
+
+      //  )
     }
 }
 

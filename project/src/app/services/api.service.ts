@@ -2,8 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Book } from '../types/book'
+import { Comment } from 'src/app/types/comment';
 import { environment } from '../../environments/environment.development';
 import { User } from '../types/user';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -63,6 +65,12 @@ export class ApiService {
   deleteBook(id: string) {
     const { apiUrl } = environment;
     return this.http.delete<Book>(`${apiUrl}/data/books/${id}`);
+  }
+
+  postComment(newComment: Comment): Observable<Comment>
+   {
+    const { apiUrl } = environment;
+    return this.http.post<Comment>(`${apiUrl}/data/posts`,newComment)
   }
 
 }

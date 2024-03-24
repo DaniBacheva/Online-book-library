@@ -1,10 +1,10 @@
-
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { CommentsService } from 'src/app/services/comments.service';
 import { Book } from 'src/app/types/book';
+import { Comment } from 'src/app/types/comment';
 
 @Component({
   selector: 'app-current-book',
@@ -18,6 +18,8 @@ export class CurrentBookComponent implements OnInit {
   comment: Comment | undefined;
   allComments: Comment[] = [];
   comments: Comment[] = [];
+  commentText: string = ''
+
 
   constructor(
     private apiService: ApiService,
@@ -36,33 +38,59 @@ export class CurrentBookComponent implements OnInit {
       this.book = book;
       console.log(book)
     })
-
   }
 
   loadComments(): void {
-    const id = this.activatedRoute.snapshot.params['bookId'];
+    const bookId = this.activatedRoute.snapshot.params['bookId'];
 
-    this.commentService.getComments().subscribe((comments: Comment[]) => {
-      this.allComments=comments;
-        if (id) {
-          this.currentBookComments = this.allComments//.filter (comment=> comment._id===this.id);
-        }
-        else {
-          this.currentBookComments = []
-        }
+    this.commentService.getComments();
+    this.commentService.comments$.subscribe((comments) => {
+      //this.allComments=comments;
+      console.log(comments)
+      if (bookId) {
+        console.log(bookId)
+        console.log(this.comment?.bookId)
+        this.currentBookComments = comments.filter(comment => comment.bookId === bookId);
+        console.log(this.currentBookComments)
       }
+      else {
+        this.currentBookComments = []
+      }
+    }
     )
-
   }
-
   commentAdd(form: NgForm): void {
-    const id = this.activatedRoute.snapshot.params['bookId'];
     if (form.invalid) {
       return
     }
-    const { name, text } = form.value;
+    let { commentText } = form.value;
 
+    const userName = localStorage.getItem('username');
+    const bookId = this.activatedRoute.snapshot.params['bookId'];
+    const newComment: Comment = {
+      commentText: commentText,
+      bookId: bookId,
+      username: userName ? userName : undefined
+    }
 
+    if (bookId) {
+      this.apiService.postComment(newComment).subscribe({
+        next: (response) => {
+          form.resetForm();
+          this.commentService.addComment(response);
+
+        },
+        error: (error) => {
+          console.log('Error', error)
+        }
+      })
+    }
+
+    //this.commentService.addComment(text)
+    console.log(form.value)
   }
 
+
 }
+
+

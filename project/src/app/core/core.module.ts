@@ -7,12 +7,14 @@ import { ErrorComponent } from './error/error.component';
 import { ConformModalComponent } from './conform-modal/conform-modal.component';
 
 
+
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     ErrorComponent,
     ConformModalComponent,
+   
 
   ],
   imports: [
