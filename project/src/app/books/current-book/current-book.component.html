@@ -24,11 +24,13 @@
                 <p>{{book?.moreInfo}}</p>
 
                 <div class="buttons">
-                    <!-- Only for registered user and creator of the book-->
-                    <a routerLink="/books/{{book?._id}}/edit-book">Edit</a>
-                    <a routerLink="/books/{{book?._id}}/delete-book">Delete</a>
-                    <!-- logged in user who has not downloaded the book yet-->
-                    <a href="#">Download</a>
+                    <ng-container *ngIf="isLoggedIn">
+                        <!-- Only for registered user and creator of the book-->
+                        <a routerLink="/books/{{book?._id}}/edit-book">Edit</a>
+                        <a routerLink="/books/{{book?._id}}/delete-book">Delete</a>
+                        <!-- logged in user who has not downloaded the book yet-->
+                        <a href="#">Download</a>
+                    </ng-container>
                     <a routerLink="/books">Back</a>
                     <!-- logged in user who has already downloaded the book
                     <p class="downloaded">You've already downloaded this book!</p>-->
@@ -44,11 +46,12 @@
                 <p><span><i class="fa-duotone fa-comment"></i></span>{{post.commentText}}</p>
             </div>
 
-            <div class="add-comment">
+            <div class="add-comment" *ngIf="isLoggedIn">
                 <p>What do you think?</p>
                 <div class="postText">
                     <form #form="ngForm" (ngSubmit)="commentAdd(form)">
-                        <textarea name="commentText" id="comment" cols="50" rows="5" ngModel required #inputText="ngModel">
+                        <textarea name="commentText" id="comment" cols="50" rows="5" ngModel required
+                            #inputText="ngModel">
                     </textarea>
 
                         <input type="submit" value="Post">

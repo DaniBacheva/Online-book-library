@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { CommentsService } from 'src/app/services/comments.service';
 import { Book } from 'src/app/types/book';
 import { Comment } from 'src/app/types/comment';
+import { UserService } from 'src/app/user/user.service';
 
 @Component({
   selector: 'app-current-book',
@@ -25,12 +26,19 @@ export class CurrentBookComponent implements OnInit {
     private apiService: ApiService,
     private commentService: CommentsService,
     private activatedRoute: ActivatedRoute,
+    private userService: UserService
+
   ) { }
 
   ngOnInit(): void {
     this.getBookById();
     this.loadComments();
+    
   }
+
+  get isLoggedIn(): boolean {
+    return this.userService.isLogged;
+      }
 
   getBookById(): void {
     const id = this.activatedRoute.snapshot.params['bookId'];
