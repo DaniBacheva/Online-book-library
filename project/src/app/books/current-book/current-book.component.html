@@ -14,7 +14,7 @@
                     <h3>Pages: {{book?.pages}}</h3>
                     <h3>Added by: {{book?.author}}</h3>
                     <!--If there are users how downloaded it-->
-                    <h4>Downloaded by: 4</h4>
+                    <h4>Downloaded by: {{this.currentBookSubscribers.length}}</h4>
 
                     <!-- If there are not
                 <h4>Nobody has downloaded this book yet</h4>-->
@@ -32,8 +32,8 @@
                         </ng-container>
                         <ng-container *ngIf="!isOwner">
                         <!-- logged in user who has not downloaded the book yet-->
-                        <p *ngIf="!hasSubscribed"  class="downloaded">You've already downloaded this book!</p>
-                        <button *ngIf="hasSubscribed"   (click)="addSubscribers()">Download</button>
+                        <p *ngIf="hasSubscribed"  class="downloaded">You've already downloaded this book!</p>
+                        <button *ngIf="!hasSubscribed"   (click)="addSubscribers()">Download</button>
                         </ng-container>
                     </ng-container>
                     <a routerLink="/books">Back</a>

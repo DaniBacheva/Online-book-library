@@ -113,7 +113,7 @@ export class CurrentBookComponent implements OnInit {
         this.currentBookSubscribers = subscribers.filter(subscriber => subscriber.bookId === bookId);
         console.log(this.currentBookSubscribers.length);
 
-        if (this.currentBookSubscribers.length === 0) {
+        if (this.currentBookSubscribers.length > 0) {
           this.hasSubscribed = true;
         }
 
