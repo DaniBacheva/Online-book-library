@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+import { Subscriber } from '../types/subscriber'
 import { Book } from '../types/book'
 import { Comment } from 'src/app/types/comment';
 import { environment } from '../../environments/environment.development';
-import { User } from '../types/user';
 import { Observable } from 'rxjs';
 
 
@@ -20,15 +20,9 @@ export class ApiService {
     return this.http.get<Book[]>(`${apiUrl}/data/books`)
   }
 
-  getLatestBooks(limit?: number) { // todo
-    const { apiUrl } = environment;
-    return this.http.get<Book[]>(`${apiUrl}/data/books`)
-  }
-
   getOneBook(id: string) {
     const { apiUrl } = environment;
     return this.http.get<Book>(`${apiUrl}/data/books/${id}`)
-
   }
 
   createBook(
@@ -48,10 +42,6 @@ export class ApiService {
       imageUrl: string,
       moreInfo: string,
       _id: string,
-      posts: [],
-      subscribers: [],
-      creator: User
-
     }>(`${apiUrl}/data/books`, { title, author, genre, pages, imageUrl, moreInfo })
 
   }
@@ -67,10 +57,19 @@ export class ApiService {
     return this.http.delete<Book>(`${apiUrl}/data/books/${id}`);
   }
 
-  postComment(newComment: Comment): Observable<Comment>
-   {
+  addSubscribersToBook(newSubscriber: Subscriber) : Observable<Subscriber>{
     const { apiUrl } = environment;
-    return this.http.post<Comment>(`${apiUrl}/data/posts`,newComment)
+    return this.http.post<Subscriber>(`${apiUrl}/data/subscribers`, newSubscriber)
   }
+
+
+  postComment(newComment: Comment): Observable<Comment> {
+    const { apiUrl } = environment;
+    return this.http.post<Comment>(`${apiUrl}/data/posts`, newComment)
+  }
+
+  
+
+
 
 }

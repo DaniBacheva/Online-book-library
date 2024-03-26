@@ -43,16 +43,27 @@
 }
 
 .details-description .buttons {
+    display: flex;
     padding-top: 2em;
 }
 
-.details-description .buttons a {
+ .details-description .buttons a,
+ .details-description .buttons button{
     margin: 0 2em;
     border: 1px solid black;
     border-radius: 0.3em;
     text-decoration: none;
     background-color: rgb(180, 240, 178);
     padding: 0.3em 1em;
+}
+
+.details-description .buttons p {
+    margin: 0 2em;
+    border: 1px solid black;
+    border-radius: 0.3em;
+    text-decoration: none;
+    background-color: rgb(180, 240, 178);
+    padding: 0.3em 0.8em;
 }
 
 .posts h3 {

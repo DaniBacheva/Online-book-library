@@ -14,7 +14,7 @@
                     <h3>Pages: {{book?.pages}}</h3>
                     <h3>Added by: {{book?.author}}</h3>
                     <!--If there are users how downloaded it-->
-                    <h4>Downloaded by: {{book?.subscribers?.length}}</h4>
+                    <h4>Downloaded by: 4</h4>
 
                     <!-- If there are not
                 <h4>Nobody has downloaded this book yet</h4>-->
@@ -26,14 +26,18 @@
                 <div class="buttons">
                     <ng-container *ngIf="isLoggedIn">
                         <!-- Only for registered user and creator of the book-->
+                        <ng-container *ngIf="isOwner">
                         <a routerLink="/books/{{book?._id}}/edit-book">Edit</a>
                         <a routerLink="/books/{{book?._id}}/delete-book">Delete</a>
+                        </ng-container>
+                        <ng-container *ngIf="!isOwner">
                         <!-- logged in user who has not downloaded the book yet-->
-                        <a href="#">Download</a>
+                        <p *ngIf="!hasSubscribed"  class="downloaded">You've already downloaded this book!</p>
+                        <button *ngIf="hasSubscribed"   (click)="addSubscribers()">Download</button>
+                        </ng-container>
                     </ng-container>
                     <a routerLink="/books">Back</a>
-                    <!-- logged in user who has already downloaded the book
-                    <p class="downloaded">You've already downloaded this book!</p>-->
+                                       
                 </div>
 
             </div>

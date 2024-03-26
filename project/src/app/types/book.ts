@@ -8,8 +8,6 @@ export interface Book {
     imageUrl: string,
     moreInfo:string,
     _id: string,
-    posts: [],
-    subscribers:[],
-    creator:User
+    _ownerId:string
 
 }

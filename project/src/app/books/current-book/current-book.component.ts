@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+
 import { ApiService } from 'src/app/services/api.service';
 import { CommentsService } from 'src/app/services/comments.service';
+import { SubscriberService } from 'src/app/services/subscribers.service';
 import { Book } from 'src/app/types/book';
 import { Comment } from 'src/app/types/comment';
+import { Subscriber } from 'src/app/types/subscriber';
 import { UserService } from 'src/app/user/user.service';
 
 @Component({
@@ -14,37 +17,44 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class CurrentBookComponent implements OnInit {
   book: Book | undefined;
+  currentBookSubscribers: Subscriber[] = [];
   currentBookComments: Comment[] = [];
   newComment: Comment | undefined;
   comment: Comment | undefined;
   allComments: Comment[] = [];
   comments: Comment[] = [];
-  commentText: string = ''
-
+  commentText: string = '';
+  isOwner: boolean = false;
+  hasSubscribed: boolean = false;
 
   constructor(
     private apiService: ApiService,
     private commentService: CommentsService,
     private activatedRoute: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private subService: SubscriberService
 
   ) { }
 
   ngOnInit(): void {
     this.getBookById();
     this.loadComments();
-    
+    this.loadSubscribers()
   }
 
   get isLoggedIn(): boolean {
     return this.userService.isLogged;
-      }
+  }
 
   getBookById(): void {
     const id = this.activatedRoute.snapshot.params['bookId'];
     this.apiService.getOneBook(id).subscribe((book) => {
       this.book = book;
-      console.log(book)
+      console.log(book);
+
+      const userId = localStorage.getItem('userId');
+      this.isOwner = book._ownerId === userId
+      console.log(this.isOwner);
     })
   }
 
@@ -64,15 +74,13 @@ export class CurrentBookComponent implements OnInit {
       else {
         this.currentBookComments = []
       }
-    }
-    )
+    })
   }
   commentAdd(form: NgForm): void {
     if (form.invalid) {
       return
     }
     let { commentText } = form.value;
-
     const userName = localStorage.getItem('username');
     const bookId = this.activatedRoute.snapshot.params['bookId'];
     const newComment: Comment = {
@@ -93,12 +101,48 @@ export class CurrentBookComponent implements OnInit {
         }
       })
     }
-
-    //this.commentService.addComment(text)
-    console.log(form.value)
   }
 
+  loadSubscribers() {
+    const bookId = this.activatedRoute.snapshot.params['bookId'];
 
+    this.subService.getSubscribers();
+    this.subService.subscribers$.subscribe((subscribers) => {
+      console.log(subscribers);
+      if (bookId) {
+        this.currentBookSubscribers = subscribers.filter(subscriber => subscriber.bookId === bookId);
+        console.log(this.currentBookSubscribers.length);
+
+        if (this.currentBookSubscribers.length === 0) {
+          this.hasSubscribed = true;
+        }
+
+        else {
+          this.currentBookSubscribers = [];
+          this.hasSubscribed = false;
+        }
+      }
+    })
+  }
+
+  addSubscribers() {
+    const bookId = this.activatedRoute.snapshot.params['bookId'];
+    const userId = localStorage.getItem('userId');
+    const newSubscriber: Subscriber = {
+      userId: userId!,
+      bookId: bookId
+    };
+    if (bookId) {
+      this.apiService.addSubscribersToBook(newSubscriber).subscribe({
+        next: (response) => {
+          this.subService.addSubscriber(response);
+        },
+        error: (error) => {
+          console.log('Error', error)
+        }
+      })
+    }
+  }
 }
 
 
