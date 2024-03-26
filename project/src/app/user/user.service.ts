@@ -4,14 +4,12 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 
-
 @Injectable({
 	providedIn: 'root'
 })
 export class UserService implements OnDestroy {
 
 	private user$$ = new BehaviorSubject<User | undefined>(undefined);
-
 	public user$ = this.user$$.asObservable()
 
 	user: User | undefined
@@ -34,9 +32,7 @@ export class UserService implements OnDestroy {
 		const _id = localStorage.getItem('userId');
 
 		if (accessToken && email && username && _id) {
-
-			this.user$$.next({ email, username, _id, accessToken });
-
+		this.user$$.next({ username, email, _id, accessToken });
 		} else {
 			this.user$$.next(undefined);
 		}
@@ -45,7 +41,7 @@ export class UserService implements OnDestroy {
 	login(email: string, password: string) {
 		const { apiUrl } = environment;
 
-		return this.http.post<{ email: string, username: string, _id: string, accessToken: string }>(`${apiUrl}/users/login`, { email, password })
+		return this.http.post<{ username: string, email: string,  _id: string, accessToken: string }>(`${apiUrl}/users/login`, { email, password })
 			.pipe(
 				tap(res => {
 					localStorage.setItem('accessToken', res.accessToken);
@@ -58,16 +54,14 @@ export class UserService implements OnDestroy {
 						_id: res._id,
 						accessToken: res.accessToken
 					});
-				
 				})
-				
 			);
 
 	}
 	register(username: string, email: string, password: string) {
 		const { apiUrl } = environment;
 
-		return this.http.post<{ email: string, username: string, _id: string, accessToken: string }>(`${apiUrl}/users/register`, { username, email, password })
+		return this.http.post<{username: string, email: string, _id: string, accessToken: string }>(`${apiUrl}/users/register`, { username, email, password })
 			.pipe(
 				tap(res => {
 					localStorage.setItem('accessToken', res.accessToken);
@@ -79,13 +73,11 @@ export class UserService implements OnDestroy {
 						username: res.username,
 						_id: res._id,
 						accessToken: res.accessToken
-					});
-
+				});
 
 				})
 			);
 	}
-
 
 	logout() {
 		return this.http.post<User>(`${environment.apiUrl}/users/logout`, {})

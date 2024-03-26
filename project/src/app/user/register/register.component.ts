@@ -39,9 +39,15 @@ export class RegisterComponent {
     } = this.form.value;
 
     console.log(this.form.value)
-    this.userService.register(email!, username!, password).subscribe(() => {
-      console.log(this.form.value);
+    this.userService.register( username!, email!, password).subscribe({
+      next: ()=> {
+        console.log(this.form.value);
       this.router.navigate(['/books'])
+      },
+      error: (error)=> {
+        console.error("Registration failed", error)
+      }
+      
     })
   }
 }
