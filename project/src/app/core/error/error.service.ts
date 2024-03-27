@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -7,10 +8,11 @@ import { BehaviorSubject } from 'rxjs';
 export class ErrorService {
   private apiError$$ = new BehaviorSubject(null);
   public apiError$ = this.apiError$$.asObservable();
+   
+    constructor() {}
 
-  constructor() {}
-
-  setError(error: any): void {
+  setError(error:any): void {
     this.apiError$$.next(error);
+    console.log(error);
   }
 }

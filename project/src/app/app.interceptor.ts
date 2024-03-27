@@ -1,15 +1,17 @@
-import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable, Provider } from "@angular/core";
 import { Router } from "@angular/router";
-import { Observable, catchError } from "rxjs";
+import { Observable, throwError } from "rxjs";
+import { catchError } from 'rxjs/operators'
+
 import { ErrorService } from "./core/error/error.service";
 
 const URL = "http://localhost://3030/users"
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
-    constructor (private router: Router,
-        private errorService: ErrorService){}
+    constructor(private router: Router,
+        private errorService: ErrorService) { }
     intercept(
         req: HttpRequest<any>,
         next: HttpHandler
@@ -30,22 +32,23 @@ export class AppInterceptor implements HttpInterceptor {
                 setHeaders: {
                     "Content-Type": 'aplication/json'
                 }
-            }); 
+            });
         }
-        return next.handle(req)//.//pipe(
-        //    catchError((err)=> {
-        //        if (err.status === 401 || err.status === 404) {
-        //            this.router.navigate(['/auth/login'])
+        return next.handle(req).pipe(
+            catchError((err) => {
 
-       //         }
-        //         else {
-        //            this.errorService.setError(err);
-        //            this.router.navigate(['/error'])
-        //         }
-        //         return [err]
-        //    })
+                if (err.status === 401) {
+                    this.router.navigate(['/auth/register'])
+                }
+                else {
+                    this.errorService.setError(err);
+                    this.router.navigate(['/error'])
+                }
 
-      //  )
+                return [err]
+            })
+
+        )
     }
 }
 
