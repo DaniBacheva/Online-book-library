@@ -60,7 +60,7 @@ section .register .register-form {
     outline: none;
 }
 
-.register .register-form input[type="submit"] {
+.register .register-form button {
     width: 22em;
     height: 2.2em;
     margin-top: 2em;
@@ -72,6 +72,11 @@ section .register .register-form {
 .register .register-form p {
     text-align: center;
     padding: 1.4em 0;
+}
+
+.register .register-form p.error {
+    padding: 0.5em 0 0 0;
+    color: red;
 }
 
 .register .register-form p>a {

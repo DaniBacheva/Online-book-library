@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
-import { passwordMatchValidator } from 'src/app/validators/passwords-match';
+import { passwordsMatch } from '../../shared/utils/passwordsMatch';
+import { emailValidator} from '../../shared/utils/email-validator'
 
 
 @Component({
@@ -12,14 +13,14 @@ import { passwordMatchValidator } from 'src/app/validators/passwords-match';
 })
 export class RegisterComponent {
   form = this.fb.group({
-    username: ["", [Validators.required]],
-    email: ["", [Validators.required]],
+    username: ["", [Validators.required, Validators.minLength(4)]],
+    email: ["", [Validators.required, emailValidator()]],
     passGroup: this.fb.group({
-      password: ["", [Validators.required]],
+      password: ["", [Validators.required, Validators.minLength(6)]],
       rePassword: ["", [Validators.required]],
     },
       {
-        Validators: [passwordMatchValidator("password", "rePassword")]
+        validators: [passwordsMatch("password", "rePassword")]
       }
     ),
 
@@ -39,15 +40,15 @@ export class RegisterComponent {
     } = this.form.value;
 
     console.log(this.form.value)
-    this.userService.register( username!, email!, password).subscribe({
-      next: ()=> {
-        console.log(this.form.value);
-      this.router.navigate(['/books'])
-      },
-      error: (error)=> {
-        console.error("Registration failed", error)
-      }
+   // this.userService.register( username!, email!, password).subscribe({
+    //  next: ()=> {
+    //    console.log(this.form.value);
+   //   this.router.navigate(['/books'])
+   //   },
+   //   error: (error)=> {
+   //     console.error("Registration failed", error)
+   //   }
       
-    })
+ //   })
   }
 }
