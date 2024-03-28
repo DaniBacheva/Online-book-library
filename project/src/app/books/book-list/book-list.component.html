@@ -3,9 +3,8 @@
         <h2>All Books</h2>
         <div class="catalog">
            
-                <app-loader *ngIf="!booksList"></app-loader>
-        
-            <article *ngFor="let book of booksList"  class="catalog-card">
+     
+            <article *ngFor="let book of books$ | async"  class="catalog-card">
                 <div class="media">
                     <img
                         src="{{book.imageUrl}}">

@@ -15,6 +15,7 @@ import { appInterceptorProvider } from './app.interceptor';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CoreModule } from './core/core.module';
 import { AuthenticatedComponent } from './authenticated/authenticated.component';
+import { NoAuthenticatedComponent } from './authenticated/no-authenticated/no-authenticated.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AuthenticatedComponent } from './authenticated/authenticated.component'
     HomeComponent,
     NotFoundComponent,
     AuthenticatedComponent,
+    NoAuthenticatedComponent,
 
   ],
   imports: [

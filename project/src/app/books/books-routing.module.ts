@@ -5,6 +5,7 @@ import { CurrentBookComponent } from './current-book/current-book.component';
 import { NewBookComponent } from './new-book/new-book.component';
 import { EditBookComponent } from './edit-book/edit-book.component';
 import { ConformModalComponent } from '../core/conform-modal/conform-modal.component';
+import { AuthActivate } from '../guards/auth.activated';
 
 
 const routes: Routes = [
@@ -16,14 +17,19 @@ const routes: Routes = [
                 path: ':bookId',
                 children: [
                     { path: '', pathMatch: 'full', component: CurrentBookComponent },
-                    { path: 'edit-book', component: EditBookComponent },
-                    { path: 'delete-book', component: ConformModalComponent}, 
+                    { path: 'edit-book', component: EditBookComponent ,
+                    canActivate:[AuthActivate]
+                     },
+                    { path: 'delete-book', component: ConformModalComponent, 
+                    canActivate:[AuthActivate]
+                }, 
                 ]
             }
         ],
     },
     {
-        path: 'new-book', component: NewBookComponent
+        path: 'new-book', component: NewBookComponent,
+        canActivate:[AuthActivate]
 
     }
 ];
