@@ -1,52 +1,58 @@
-section .profile .container{
+.profile .container{
     display: flex;
     flex-direction: row;
+    gap: 5em
 }
 
+.profile .user{
+    flex: 1 1 30%;
+    display: flex;
+    flex-direction: column;
+ 
+    margin-top: 2em;
+    padding: 1em 1em ;
+}
 
-.profile .media {
+.profile .added .books {
+    flex: 1 1 65%;
+    display: flex;
+    border: 1px solid black;
+    margin-top: 2em;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 1em;
+    border-radius: 0.5em;
+    padding-top: 1em;
+}
+
+.profile .user .media {
     max-width: 5em;
     height: auto;
 }
 
-.hero-content h1 {
-    font-size: 2.5em;
-    text-transform: uppercase;
-    font-style: italic;
-    font-weight: bold;
-    padding-top: 3em;
-    width: 10ch;
-    text-align: right;
-}
-
 .profile h2 {
     margin-top: 1em;
-    font-size: 1.5em;
+    font-size: 1.2em;
     text-transform: uppercase;
       text-align: center;
+      padding-bottom: 0.5em;
 }
 
-.profile .books {
-    display: flex;
+.profile .user  h3,
+.profile .user  h4,
+.profile .user p {
+    padding-bottom: 1em;
 }
 
-.profile .lastest-books {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    gap: 1em;
-    margin-top: 1.5em;
-}
-
-
-.profile .lastest-books .info {
+.profile .added .books .info {
     border: 2px solid black;
     border-radius: 1em;
     padding: 1em;
-    flex: 1 1 25%;
+    flex: 0 1 25%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 2em;
+    margin:1em
 
 }
 
@@ -55,14 +61,14 @@ section .profile .container{
     width: 8em;
     height: auto;
     overflow: hidden;
+      
 }
 
-.profile.info .content h3,
+.profile .info .content h3,
+.profile .info .content h4,
 .profile .info .content p {
-    padding-bottom: 0.7em;
+    padding-bottom: 1em;
 }
-
-
 
 .profile .info .content a {
     margin-top: 1em;
@@ -72,6 +78,6 @@ section .profile .container{
     text-decoration: none;
     color: black;
 }
-.more-info {
+.profile .more-info {
     margin-top: 1em;
 }

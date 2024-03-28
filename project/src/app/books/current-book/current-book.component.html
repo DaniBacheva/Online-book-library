@@ -24,7 +24,7 @@
                         </ng-container>
                         <ng-container *ngIf="!isOwner">
                           <p *ngIf="hasSubscribed"  class="downloaded">You've already downloaded this book!</p>
-                        <button *ngIf="!hasSubscribed"   (click)="addSubscribers()">Download</button>
+                        <button *ngIf="!hasSubscribed"   (click)="addSubscribers()"><span><i class="fa-solid fa-download"></i></span>Download</button>
                         </ng-container>
                     </ng-container>
                     <a routerLink="/books">Back</a>          
@@ -36,7 +36,7 @@
             <h3>Recent post:</h3>
             <div class="post-list" *ngFor="let post of currentBookComments">
                 <p class="userId"><span>{{post.username}}</span> posted on {{post._createdOn | date}}</p>
-                <p>{{post?.commentText}}</p>
+                <p><span><i class="fa-regular fa-comment"></i></span>{{post?.commentText}}</p>
             </div>
             <div class="add-comment" *ngIf="isLoggedIn">
                 <p>What do you think?</p>

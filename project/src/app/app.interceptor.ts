@@ -1,7 +1,7 @@
-import { HTTP_INTERCEPTORS, HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { HTTP_INTERCEPTORS,  HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable, Provider } from "@angular/core";
 import { Router } from "@angular/router";
-import { Observable, throwError } from "rxjs";
+import { Observable} from "rxjs";
 import { catchError } from 'rxjs/operators'
 
 import { ErrorService } from "./core/error/error.service";

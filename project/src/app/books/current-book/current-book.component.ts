@@ -17,19 +17,19 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class CurrentBookComponent implements OnInit {
   book: Book | undefined;
-  currentBookComments: Comment[] = [];
-  isOwner: boolean = false;
+ isOwner: boolean = false;
 
   allSubscribers: Subscriber[] = [];
   subscriberforCurrentBook: Subscriber[] = [];
-  subscribers: Subscriber[] = [];
+ // subscribers: Subscriber[] = [];
   hasSubscribed: boolean = false;
 
-  newComment: Comment | undefined = undefined;
-  comment: Comment | undefined = undefined;
-  allComments: Comment[] = [];
-  comments: Comment[] = [];
-  commentText: string = '';
+  currentBookComments: Comment[] = [];
+  //newComment: Comment | undefined = undefined;
+  //comment: Comment | undefined = undefined;
+  //allComments: Comment[] = [];
+  //comments: Comment[] = [];
+  //commentText: string = '';
 
   constructor(
     private apiService: ApiService,
@@ -66,17 +66,15 @@ export class CurrentBookComponent implements OnInit {
 
     this.commentService.getComments();
     this.commentService.comments$.subscribe((comments) => {
-
-      //this.allComments=comments;
-      console.log(comments)
-      if (bookId) {
+    //  console.log(comments)
+     // if (bookId) {
         console.log(bookId)
         this.currentBookComments = comments.filter(comment => comment.bookId === bookId);
         console.log(this.currentBookComments)
-      }
-      else {
-        this.currentBookComments = []
-      }
+   //   }
+   //   else {
+   //     this.currentBookComments = []
+   //   }
     })
   }
   commentAdd(form: NgForm): void {
@@ -90,9 +88,9 @@ export class CurrentBookComponent implements OnInit {
       commentText: commentText,
       bookId: bookId,
       username: userName ? userName : undefined,
-        }
+    }
 
-    if (bookId) {
+  // if (bookId) {
       this.apiService.postComment(newComment).subscribe({
         next: (response) => {
           form.resetForm();
@@ -102,7 +100,7 @@ export class CurrentBookComponent implements OnInit {
           console.log('Error', error)
         }
       })
-    }
+   // }
   }
 
   loadSubscribers() {
@@ -113,7 +111,7 @@ export class CurrentBookComponent implements OnInit {
     this.subService.subscribers$.subscribe((subscribers) => {
       console.log(subscribers);
 
-      if (bookId) {
+  //    if (bookId) {
         this.allSubscribers = subscribers.filter(subscriber => subscriber.bookId === bookId)
         console.log(this.allSubscribers)
         this.subscriberforCurrentBook = this.allSubscribers.filter(subscriber => subscriber.userId === userId);
@@ -125,7 +123,7 @@ export class CurrentBookComponent implements OnInit {
         else {
           this.hasSubscribed = false;
         }
-      }
+   //   }
     })
   }
 
@@ -137,7 +135,7 @@ export class CurrentBookComponent implements OnInit {
       userId: userId!,
       bookId: bookId
     };
-    if (bookId) {
+//    if (bookId) {
       this.apiService.addSubscribersToBook(newSubscriber).subscribe({
         next: (response) => {
           this.subService.addSubscriber(response);
@@ -147,7 +145,7 @@ export class CurrentBookComponent implements OnInit {
         }
       })
     }
-  }
+//  }
 }
 
 

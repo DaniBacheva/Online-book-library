@@ -57,6 +57,10 @@
     padding: 0.3em 1em;
 }
 
+.details-description .buttons button i {
+padding-right: 1em;
+}
+
 .details-description .buttons p {
     margin: 0 2em;
     border: 1px solid black;
@@ -80,6 +84,11 @@
 .post-list p {
     padding: 1em;
 }
+
+.post-list i {
+    padding-right: 1em;
+}
+
 
 .post-list .userId {
     text-decoration: underline;
