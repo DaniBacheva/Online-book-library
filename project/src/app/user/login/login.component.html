@@ -5,19 +5,29 @@
             <div class="media">
                 <img src="/assets/cover.jpg">
             </div>
-            <div class="login-form" >
+            <div class="login-form">
                 <h1>Login</h1>
                 <form #form=ngForm (ngSubmit)="login(form)">
                     <label>Email</label>
-                    <input type="text" placeholder="Email.." name="email" id="email"
-                    ngModel required 
-                    #inputEmail="ngModel">
+                    <input type="text" placeholder="Email.." name="email" id="email" ngModel required
+                        #inputEmail="ngModel" [appEmail]="[]">
+
+                    <ng-container *ngIf="inputEmail.touched">
+                        <p class="error" *ngIf="inputEmail.errors?.['required']">Email is required!</p>
+                        <p class="error" *ngIf="inputEmail.errors?.['emailValidator']">Email is not valid!</p>
+                    </ng-container>
 
                     <label>Password</label>
-                    <input type="password" placeholder="Password.." name="password" id="password"
-                    ngModel required #inputPassword="ngModel" minlength="1" >
+                    <input type="password" placeholder="Password.." name="password" id="password" ngModel required
+                        #inputPassword="ngModel" minlength="3">
 
-                    <input type="submit" value="Login">
+                    <ng-container *ngIf="inputPassword.touched">
+                        <p class="error" *ngIf="inputPassword.errors?.['required']">Password is required!</p>
+                        <p class="error" *ngIf="inputPassword.errors?.['minlength']">Password must be at least {{inputPassword.errors?.['minlength'] ['requiredLength']}} characters!</p>
+                    </ng-container>
+
+                    <button [disabled]="form.invalid"
+                        [style]="{backgroundColor: form.invalid ? 'grey' : 'blue'}">Login</button>
                 </form>
                 <p>Not have an account? <a routerLink="/auth/register">Register here</a></p>
             </div>
