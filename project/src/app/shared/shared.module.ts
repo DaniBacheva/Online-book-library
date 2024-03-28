@@ -4,13 +4,11 @@ import { LoaderComponent } from './loader/loader.component';
 import { AppEmailDirective } from './validators/email.directive';
 
 
-
-
 @NgModule({
   declarations: [
     LoaderComponent,
     AppEmailDirective,
-
+    
   ],
   imports: [
     CommonModule

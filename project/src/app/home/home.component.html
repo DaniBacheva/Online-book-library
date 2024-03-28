@@ -17,8 +17,8 @@
                         <img src="{{book.imageUrl}}">
                     </div>
                     <div class="content">
-                        <h3 class="title">{{book.title}}</h3>
-                        <p class="author"> {{book.author}}</p>
+                        <h3 class="title">{{book.title | uppercase }}</h3>
+                        <p class="author"> {{book.author | uppercase}}</p>
                         <p class="genre">Genre:{{book.genre}}</p>
                         <div class="more-info">
                             <a [routerLink]="['/books', book._id]">More info</a>

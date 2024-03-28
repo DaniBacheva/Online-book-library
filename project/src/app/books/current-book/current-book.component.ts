@@ -89,8 +89,8 @@ export class CurrentBookComponent implements OnInit {
     const newComment: Comment = {
       commentText: commentText,
       bookId: bookId,
-      username: userName ? userName : undefined
-    }
+      username: userName ? userName : undefined,
+        }
 
     if (bookId) {
       this.apiService.postComment(newComment).subscribe({
