@@ -68,7 +68,7 @@
                     <p class="error" *ngIf="inputMoreInfo.errors?.['minlength']">Description must be at least {{inputMoreInfo.errors?.['minlength'] ['requiredLength']}} characters!</p>
                 </ng-container>
 
-                <button [disabled]="form.invalid"
+                <button type="submit" [disabled]="form.invalid"
                 [style]="{backgroundColor: form.invalid ? 'grey' : 'blue'}" id="btn" >Add</button>
             </form>
         </div>
