@@ -7,109 +7,33 @@
                 <img src="../../../assets/profile.png" />
             </div>
             <h3>Username:</h3>
+            <p> {{user?.username}}</p>
             <h4>Email: </h4>
-            <p>Added books:</p>
-            <p>Downloaded books: ff</p>
+            <p> {{user?.email}}</p>
+            <p>Added books: {{myBooks.length}}</p>
+            <p>Downloaded books: {{mySubBooks.length}}</p>
         </div>
-
-
 
         <div class="added">
             <h2> My books</h2>
-            <div class="books">
+            <div class="books" *ngFor="let book of myBooks">
                 <div class="info">
                     <div class="media">
                         <img
-                            src="https://cdn.penguin.co.uk/dam-assets/books/9781408481806/9781408481806-jacket-large.jpg">
+                            src="{{book.imageUrl}}">
                     </div>
                     <div class="content">
-                        <h3 class="title">4.50 From Paddington</h3>
-                        <h4 class="author">Agatha Christie </h4>
-                        <p class="genre">Genre:Crime</p>
+                        <h3 class="title">{{book.title}}</h3>
+                        <h4 class="author">{{book.author}}</h4>
+                        <p class="genre">Genre:{{book.genre}}</p>
                         <div class="more-info">
-                            <a>More info</a>
+                            <a [routerLink]="[book._id]">More info</a>
                         </div>
                     </div>
                 </div>
-
-                <div class="info">
-                    <div class="media">
-                        <img
-                            src="https://cdn.penguin.co.uk/dam-assets/books/9781408481806/9781408481806-jacket-large.jpg">
-                    </div>
-                    <div class="content">
-                        <h3 class="title">4.50 From Paddington</h3>
-                        <h4 class="author">Agatha Christie </h4>
-                        <p class="genre">Genre:Crime</p>
-                        <div class="more-info">
-                            <a>More info</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info">
-                    <div class="media">
-                        <img
-                            src="https://cdn.penguin.co.uk/dam-assets/books/9781408481806/9781408481806-jacket-large.jpg">
-                    </div>
-                    <div class="content">
-                        <h3 class="title">4.50 From Paddington</h3>
-                        <h4 class="author">Agatha Christie </h4>
-                        <p class="genre">Genre:Crime</p>
-                        <div class="more-info">
-                            <a>More info</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info">
-                    <div class="media">
-                        <img
-                            src="https://cdn.penguin.co.uk/dam-assets/books/9781408481806/9781408481806-jacket-large.jpg">
-                    </div>
-                    <div class="content">
-                        <h3 class="title">4.50 From Paddington</h3>
-                        <h4 class="author">Agatha Christie </h4>
-                        <p class="genre">Genre:Crime</p>
-                        <div class="more-info">
-                            <a>More info</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info">
-                    <div class="media">
-                        <img
-                            src="https://cdn.penguin.co.uk/dam-assets/books/9781408481806/9781408481806-jacket-large.jpg">
-                    </div>
-                    <div class="content">
-                        <h3 class="title">4.50 From Paddington</h3>
-                        <h4 class="author">Agatha Christie </h4>
-                        <p class="genre">Genre:Crime</p>
-                        <div class="more-info">
-                            <a>More info</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info">
-                    <div class="media">
-                        <img
-                            src="https://cdn.penguin.co.uk/dam-assets/books/9781408481806/9781408481806-jacket-large.jpg">
-                    </div>
-                    <div class="content">
-                        <h3 class="title">4.50 From Paddington</h3>
-                        <h4 class="author">Agatha Christie </h4>
-                        <p class="genre">Genre:Crime</p>
-                        <div class="more-info">
-                            <a>More info</a>
-                        </div>
-                    </div>
-                </div>
+    
 
             </div>
-
-
         </div>
 
     </div>

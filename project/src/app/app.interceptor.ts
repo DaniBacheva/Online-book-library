@@ -44,8 +44,7 @@ export class AppInterceptor implements HttpInterceptor {
                     this.errorService.setError(err);
                     this.router.navigate(['/error'])
                 }
-
-                return [err]
+               return [err]
             })
 
         )

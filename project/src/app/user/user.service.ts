@@ -88,6 +88,11 @@ export class UserService implements OnDestroy {
 				})
 			);
 	}
+
+	getProfile() {
+		return this.http.get<User>(`${environment.apiUrl}/users/me`)
+	}
+
 	ngOnDestroy(): void {
 		this.subscription.unsubscribe();
 	}
