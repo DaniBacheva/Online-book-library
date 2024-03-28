@@ -1,4 +1,3 @@
-import { User } from "./user";
 
 export interface Book {
     title: string,
@@ -8,6 +7,5 @@ export interface Book {
     imageUrl: string,
     moreInfo:string,
     _id: string,
-    _ownerId:string
-
-}
+    _ownerId:string,
+   }

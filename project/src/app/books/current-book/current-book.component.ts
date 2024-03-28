@@ -17,15 +17,19 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class CurrentBookComponent implements OnInit {
   book: Book | undefined;
-  currentBookSubscribers: Subscriber[] = [];
   currentBookComments: Comment[] = [];
-  newComment: Comment | undefined;
-  comment: Comment | undefined;
+  isOwner: boolean = false;
+
+  allSubscribers: Subscriber[] = [];
+  subscriberforCurrentBook: Subscriber[] = [];
+  subscribers: Subscriber[] = [];
+  hasSubscribed: boolean = false;
+
+  newComment: Comment | undefined = undefined;
+  comment: Comment | undefined = undefined;
   allComments: Comment[] = [];
   comments: Comment[] = [];
   commentText: string = '';
-  isOwner: boolean = false;
-  hasSubscribed: boolean = false;
 
   constructor(
     private apiService: ApiService,
@@ -33,7 +37,6 @@ export class CurrentBookComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private subService: SubscriberService
-
   ) { }
 
   ngOnInit(): void {
@@ -63,11 +66,11 @@ export class CurrentBookComponent implements OnInit {
 
     this.commentService.getComments();
     this.commentService.comments$.subscribe((comments) => {
+
       //this.allComments=comments;
       console.log(comments)
       if (bookId) {
         console.log(bookId)
-        console.log(this.comment?.bookId)
         this.currentBookComments = comments.filter(comment => comment.bookId === bookId);
         console.log(this.currentBookComments)
       }
@@ -94,7 +97,6 @@ export class CurrentBookComponent implements OnInit {
         next: (response) => {
           form.resetForm();
           this.commentService.addComment(response);
-
         },
         error: (error) => {
           console.log('Error', error)
@@ -105,20 +107,22 @@ export class CurrentBookComponent implements OnInit {
 
   loadSubscribers() {
     const bookId = this.activatedRoute.snapshot.params['bookId'];
-
+    console.log(bookId)
+    const userId = localStorage.getItem('userId');
     this.subService.getSubscribers();
     this.subService.subscribers$.subscribe((subscribers) => {
       console.log(subscribers);
-      if (bookId) {
-        this.currentBookSubscribers = subscribers.filter(subscriber => subscriber.bookId === bookId);
-        console.log(this.currentBookSubscribers.length);
 
-        if (this.currentBookSubscribers.length > 0) {
+      if (bookId) {
+        this.allSubscribers = subscribers.filter(subscriber => subscriber.bookId === bookId)
+        console.log(this.allSubscribers)
+        this.subscriberforCurrentBook = this.allSubscribers.filter(subscriber => subscriber.userId === userId);
+        console.log(this.subscriberforCurrentBook.length);
+
+        if (this.subscriberforCurrentBook.length > 0) {
           this.hasSubscribed = true;
         }
-
         else {
-          this.currentBookSubscribers = [];
           this.hasSubscribed = false;
         }
       }
@@ -128,6 +132,7 @@ export class CurrentBookComponent implements OnInit {
   addSubscribers() {
     const bookId = this.activatedRoute.snapshot.params['bookId'];
     const userId = localStorage.getItem('userId');
+
     const newSubscriber: Subscriber = {
       userId: userId!,
       bookId: bookId

@@ -68,8 +68,4 @@ export class ApiService {
     return this.http.post<Comment>(`${apiUrl}/data/posts`, newComment)
   }
 
-  
-
-
-
-}
+ }

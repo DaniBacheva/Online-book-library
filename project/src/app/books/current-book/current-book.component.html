@@ -1,5 +1,4 @@
 <section class="details">
-
     <div class="container">
         <div class="content">
             <div class="mainInfo">
@@ -8,48 +7,38 @@
                 </div>
                 <div class="details-info">
                     <h2>Title: {{book?.title}}</h2>
-
                     <h3>Author:{{book?.author}}</h3>
                     <h3>Genre:{{book?.genre}}</h3>
                     <h3>Pages: {{book?.pages}}</h3>
                     <h3>Added by: {{book?.author}}</h3>
                     <!--If there are users how downloaded it-->
-                    <h4>Downloaded by: {{this.currentBookSubscribers.length}}</h4>
-
-                    <!-- If there are not
-                <h4>Nobody has downloaded this book yet</h4>-->
+                    <h4>Downloaded by: {{this.allSubscribers.length}}</h4>
                 </div>
             </div>
             <div class="details-description">
                 <p>{{book?.moreInfo}}</p>
-
-                <div class="buttons">
+               <div class="buttons">
                     <ng-container *ngIf="isLoggedIn">
-                        <!-- Only for registered user and creator of the book-->
                         <ng-container *ngIf="isOwner">
                         <a routerLink="/books/{{book?._id}}/edit-book">Edit</a>
                         <a routerLink="/books/{{book?._id}}/delete-book">Delete</a>
                         </ng-container>
                         <ng-container *ngIf="!isOwner">
-                        <!-- logged in user who has not downloaded the book yet-->
-                        <p *ngIf="hasSubscribed"  class="downloaded">You've already downloaded this book!</p>
+                          <p *ngIf="hasSubscribed"  class="downloaded">You've already downloaded this book!</p>
                         <button *ngIf="!hasSubscribed"   (click)="addSubscribers()">Download</button>
                         </ng-container>
                     </ng-container>
-                    <a routerLink="/books">Back</a>
-                                       
+                    <a routerLink="/books">Back</a>          
                 </div>
-
             </div>
         </div>
 
         <div class="posts">
             <h3>Recent post:</h3>
             <div class="post-list" *ngFor="let post of currentBookComments">
-                <p class="userId"><span>{{post.username}}</span> posted on <time>{{post._createdOn}}</time></p>
-                <p><span><i class="fa-duotone fa-comment"></i></span>{{post.commentText}}</p>
+                <p class="userId"><span>{{post?.username}}</span> posted on <time>{{post?._createdOn}}</time></p>
+                <p><span><i class="fa-duotone fa-comment"></i></span>{{post?.commentText}}</p>
             </div>
-
             <div class="add-comment" *ngIf="isLoggedIn">
                 <p>What do you think?</p>
                 <div class="postText">
@@ -57,12 +46,10 @@
                         <textarea name="commentText" id="comment" cols="50" rows="5" ngModel required
                             #inputText="ngModel">
                     </textarea>
-
                         <input type="submit" value="Post">
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
 </section>
