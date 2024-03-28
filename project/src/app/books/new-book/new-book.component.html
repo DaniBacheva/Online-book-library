@@ -7,36 +7,69 @@
                 <input name="title" type="text" 
                 id="title" 
                 ngModel required
-                #inputTitle="ngModel">
+                #inputTitle="ngModel" minlength="5">
+
+                <ng-container *ngIf="inputTitle.touched">
+                    <p class="error" *ngIf="inputTitle.errors?.['required']">Title is required!</p>
+                    <p class="error" *ngIf="inputTitle.errors?.['minlength']">Title must be at least {{inputTitle.errors?.['minlength'] ['requiredLength']}} characters!</p>
+                </ng-container>
 
                 <label>Author:</label>
                 <input name="author" type="text" 
                 id="author" ngModel required
-                #inputAutor="ngModel">
+                #inputAutor="ngModel"minlength="5" >
+
+                <ng-container *ngIf="inputAutor.touched">
+                    <p class="error" *ngIf="inputAutor.errors?.['required']">Author is required!</p>
+                    <p class="error" *ngIf="inputAutor.errors?.['minlength']">Author must be at least {{inputAutor.errors?.['minlength'] ['requiredLength']}} characters!</p>
+                </ng-container>
 
                 <label>Genre:</label>
                 <input name="genre" type="text"
                  id="genre" ngModel required
-                 #inputGenre="ngModel">
+                 #inputGenre="ngModel" minlength="5">
+
+                 <ng-container *ngIf="inputGenre.touched">
+                    <p class="error" *ngIf="inputGenre.errors?.['required']">Genre is required!</p>
+                    <p class="error" *ngIf="inputGenre.errors?.['minlength']">Genre must be at least {{inputGenre.errors?.['minlength'] ['requiredLength']}} characters!</p>
+                </ng-container>
                 
                 <label>Pages:</label>
                 <input name="pages" type="number" 
                 id="pages" ngModel required
-                #inputPages="ngModel">
+                #inputPages="ngModel" minlength="2">
+
+                <ng-container *ngIf="inputPages.touched">
+                    <p class="error" *ngIf="inputPages.errors?.['required']">Pages is required!</p>
+                    <p class="error" *ngIf="inputPages.errors?.['minlength']">Pages must be at least 10!</p>
+                </ng-container>
 
                 <label>Image:</label>
                 <input name="imageUrl" type="text"
                  id="image" placeholder="http://..."
                  ngModel required
-                #inputImageUrl="ngModel">
+                #inputImageUrl="ngModel" minlength="5">
+
+                <ng-container *ngIf="inputImageUrl.touched">
+                    <p class="error" *ngIf="inputImageUrl.errors?.['required']">Image is required!</p>
+                    <p class="error" *ngIf="inputImageUrl.errors?.['minlength']">Image must be at least {{inputImageUrl.errors?.['minlength'] ['requiredLength']}} characters!</p>
+                </ng-container>
+
+                
 
                 <label>More info:</label>
                 <textarea id="content" name="moreInfo"
                 ngModel required
-                #inputMoreInfo="ngModel"
+                #inputMoreInfo="ngModel" minlength="15"
                 ></textarea>
 
-                <button type="submit" id="btn" value="Add">Add</button>
+                <ng-container *ngIf="inputMoreInfo.touched">
+                    <p class="error" *ngIf="inputMoreInfo.errors?.['required']">Description is required!</p>
+                    <p class="error" *ngIf="inputMoreInfo.errors?.['minlength']">Description must be at least {{inputMoreInfo.errors?.['minlength'] ['requiredLength']}} characters!</p>
+                </ng-container>
+
+                <button [disabled]="form.invalid"
+                [style]="{backgroundColor: form.invalid ? 'grey' : 'blue'}" id="btn" >Add</button>
             </form>
         </div>
 
