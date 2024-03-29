@@ -1,5 +1,3 @@
-<div *ngIf="isLoggedIn; else redirectToLogin" >
+<app-loader *ngIf="isAuthenticating"/>
 
- 
-</div>
-<ng-template #redirectToLogin></ng-template>
+<ng-content *ngIf="!isAuthenticating"/>

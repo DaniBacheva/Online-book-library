@@ -5,6 +5,7 @@ import { UserService } from '../user.service';
 import { User } from 'src/app/types/user';
 import { SubscriberService } from 'src/app/services/subscribers.service';
 import { Subscriber } from 'src/app/types/subscriber';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -12,18 +13,24 @@ import { Subscriber } from 'src/app/types/subscriber';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  myBooks: Book[] = [];
+  //myBooks: Book[] = [];
   user: User | undefined;
   userId: string = '';
   mySubBooks: Subscriber[] = []
-
+  myBooks$: Observable<Book[]>
+  
   constructor(
     private apiService: ApiService,
     private userService: UserService,
-    private subService: SubscriberService) { }
+    private subService: SubscriberService) {
+
+      const userId = localStorage.getItem('userId');
+      //his.user$=this.userService.getProfile();
+      this.myBooks$=this.apiService.getOwnBooks(userId!)
+     }
 
   ngOnInit(): void {
-    this.getOwnBooks();
+   // this.getOwnBooks();
     this.getProfile();
     this.loadSubscribers()
   }
@@ -31,14 +38,14 @@ export class ProfileComponent implements OnInit {
   getProfile(): void {
     this.userService.getProfile().subscribe({
       next: (user) => {
-        this.user = user;
-        console.log(user)
-      },
-      error: (error) => {
+       this.user = user;
+       console.log(user)
+    },
+    error: (error) => {
         console.log('Error', error)
-      }
-    })
-  };
+     }
+  })
+ };
 
   loadSubscribers(): void {
     const userId = localStorage.getItem('userId');
@@ -59,8 +66,8 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  getOwnBooks(): void {
-    const userId = localStorage.getItem('userId')
+  //getOwnBooks(): void {
+   // const userId = localStorage.getItem('userId')
     //this.apiService.getAllBooks().subscribe({
     //  next: (books) => {
     //  this.myBooks = books.filter(book => book._ownerId === userId)
@@ -71,16 +78,15 @@ export class ProfileComponent implements OnInit {
     //   console.log('Error', error)
     // }
     //  })
-    this.apiService.getOwnBooks(userId!).subscribe({
-      next: (books) => {
-        console.log(books);
-        this.myBooks = books
-      },
-      error: (error) => {
-        console.log('Error', error)
-      }
-    })
-  };
+   // this.apiService.getOwnBooks(userId!).subscribe({
+   //   next: (books) => {
+   //     console.log(books);
+   //     this.myBooks = books
+   //   },
+   //   error: (error) => {
+    //    console.log('Error', error)
+   /// })
+  //};
 
 
 }

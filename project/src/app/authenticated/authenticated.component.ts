@@ -9,19 +9,35 @@ import { UserService } from '../user/user.service';
   styleUrls: ['./authenticated.component.css']
 })
 export class AuthenticatedComponent implements OnInit{
-  isLoggedIn = false;
+  isAuthenticating = true;
 
   constructor (private userService: UserService,
     private router: Router) {}
 
     ngOnInit(): void {
-      this.isLoggedIn=this.userService.isLogged;
-      if (!this.isLoggedIn) { 
-        this.router.navigate(['/auth/login'])
-      }
+      this.userService.getProfile().subscribe ({
+      next: ()=> {
+        this.isAuthenticating = false;
+        },
+        error: ()=> {
+          this.isAuthenticating = false;
+          },
+          complete: ()=> {
+            this.isAuthenticating= false;
+            },
+    })
     }
 }
 
+
+
+
+
+
+
+  
+    
+  
 
 
 

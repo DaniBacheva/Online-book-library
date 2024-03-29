@@ -10,14 +10,13 @@
             <p> {{user?.username}}</p>
             <h4>Email: </h4>
             <p> {{user?.email}}</p>
-            <p>Added books: {{myBooks.length}}</p>
             <p>Downloaded books: {{mySubBooks.length}}</p>
         </div>
 
         <div class="added">
-            <h2> My books</h2>
+            <h2> My added books</h2>
             <div class="books" >
-                <div class="info" *ngFor="let book of myBooks">
+                <div class="info" *ngFor="let book of myBooks$|async">
                     <div class="media">
                         <img
                             src="{{book.imageUrl}}">
