@@ -22,9 +22,14 @@ export class ConformModalComponent {
 
   getBookById(): void {
     const id= this.activatedRoute.snapshot.params['bookId']
-    this.apiService.getOneBook(id).subscribe((book)=> {
+    this.apiService.getOneBook(id).subscribe({
+      next:(book)=> {
       this.book=book;
       console.log(book)
+      },
+      error: (error)=> {
+        console.log('Delete error', error)
+      }
     })
   }
 
@@ -35,7 +40,7 @@ export class ConformModalComponent {
         console.log("Book has been deleted!");
         this.router.navigate(['/books'])
       },
-      error: (error: any)=> {
+      error: (error)=> {
         console.log('Delete error', error)
       }
     })

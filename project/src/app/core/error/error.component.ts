@@ -18,8 +18,6 @@ export class ErrorComponent implements OnInit {
       this.errorMsg = err?.error.message || '';
       console.log(this.errorMsg)
 
-
-
     });
   }
 }

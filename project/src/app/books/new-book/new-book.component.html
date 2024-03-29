@@ -54,9 +54,7 @@
                     <p class="error" *ngIf="inputImageUrl.errors?.['required']">Image is required!</p>
                     <p class="error" *ngIf="inputImageUrl.errors?.['minlength']">Image must be at least {{inputImageUrl.errors?.['minlength'] ['requiredLength']}} characters!</p>
                 </ng-container>
-
-                
-
+             
                 <label>More info:</label>
                 <textarea id="content" name="moreInfo"
                 ngModel required

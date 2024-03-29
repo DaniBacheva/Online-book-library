@@ -21,10 +21,14 @@ export class NewBookComponent {
     }
 
     const { title, author, genre, pages, imageUrl, moreInfo } = form.value;
-    this.apiService.createBook(title, author, genre, pages, imageUrl, moreInfo).subscribe(() => {
+    this.apiService.createBook(title, author, genre, pages, imageUrl, moreInfo).subscribe({
+      next:() => {
       console.log(form.value)
      this.router.navigate(['/books'])
+      },
+      error: (error) => {
+        console.log('Error', error)
+      }
     })
-
   }
 }

@@ -57,15 +57,22 @@ export class ApiService {
     return this.http.delete<Book>(`${apiUrl}/data/books/${id}`);
   }
 
-  addSubscribersToBook(newSubscriber: Subscriber) : Observable<Subscriber>{
+  getOwnBooks(ownerId: string) {
     const { apiUrl } = environment;
-    return this.http.post<Subscriber>(`${apiUrl}/data/subscribers`, newSubscriber)
+    const queryString = encodeURIComponent(`_ownerId = "${ownerId}"`)
+    return this.http.get<Book[]>(`${apiUrl}/data/books?where=${queryString}`)
   }
 
 
-  postComment(newComment: Comment): Observable<Comment> {
-    const { apiUrl } = environment;
-    return this.http.post<Comment>(`${apiUrl}/data/posts`, newComment)
-  }
+  //addSubscribersToBook(newSubscriber: Subscriber): Observable<Subscriber> {
+  // const { apiUrl } = environment;
+  // return this.http.post<Subscriber>(`${apiUrl}/data/subscribers`, newSubscriber)
+  //}
 
- }
+
+  //postComment(newComment: Comment): Observable<Comment> {
+  // const { apiUrl } = environment;
+  // return this.http.post<Comment>(`${apiUrl}/data/posts`, newComment)
+  //}
+
+}

@@ -59,10 +59,15 @@ export class EditBookComponent implements OnInit {
     console.log(id)
     const formData = { ...this.form.value } as Book;
 
-
-    this.apiService.updateBook(formData, id).subscribe(() => {
-      console.log(formData);
+    this.apiService.updateBook(formData, id).subscribe({
+      next: ()=> {
+          console.log(formData);
       this.router.navigate(['/books'])
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    
     })
   }
 

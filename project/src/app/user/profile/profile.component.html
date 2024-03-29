@@ -16,8 +16,8 @@
 
         <div class="added">
             <h2> My books</h2>
-            <div class="books" *ngFor="let book of myBooks">
-                <div class="info">
+            <div class="books" >
+                <div class="info" *ngFor="let book of myBooks">
                     <div class="media">
                         <img
                             src="{{book.imageUrl}}">
@@ -27,15 +27,11 @@
                         <h4 class="author">{{book.author}}</h4>
                         <p class="genre">Genre:{{book.genre}}</p>
                         <div class="more-info">
-                            <a [routerLink]="[book._id]">More info</a>
+                            <a [routerLink]="['/books', book._id]">More info</a>
                         </div>
                     </div>
                 </div>
-    
-
-            </div>
+             </div>
         </div>
-
     </div>
-
 </section>

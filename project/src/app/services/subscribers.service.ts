@@ -23,10 +23,21 @@ export class SubscriberService {
     
   }
 
-  addSubscriber( newSubscriber: Subscriber ) {
+   addSubscriber( newSubscriber: Subscriber ) {
     const currentSubscribers = this.subscribersData$$.getValue();
     this.subscribersData$$.next([...currentSubscribers, newSubscriber])
   }
-    
+
+  addSubscribersToBook(newSubscriber: Subscriber){
+    const { apiUrl } = environment;
+    return this.http.post<Subscriber>(`${apiUrl}/data/subscribers`, newSubscriber)
+  }
+
+  mySubscriptions(userId: string){
+    const { apiUrl } = environment;
+    const queryString = encodeURIComponent(`userId = "${userId}"`)
+    return this.http.get<Subscriber[]>(`${apiUrl}/data/subscribers?where=${queryString}`)
+
+  }
   
 }

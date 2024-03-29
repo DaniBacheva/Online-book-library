@@ -1,25 +1,30 @@
-.profile .container{
+.profile .container {
     display: flex;
     flex-direction: row;
     gap: 5em
 }
 
-.profile .user{
+.profile .user {
     flex: 1 1 30%;
     display: flex;
     flex-direction: column;
- 
+
     margin-top: 2em;
-    padding: 1em 1em ;
+    padding: 1em 1em;
+}
+
+.profile .added {
+    flex: 1 1 70%;
+    border: 1px solid black;
+    margin-top: 2em;
+    border-radius: 0.5em;
+
 }
 
 .profile .added .books {
-    flex: 1 1 65%;
     display: flex;
-    border: 1px solid black;
-    margin-top: 2em;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+    flex-direction: row;
+justify-content:space-around;
     gap: 1em;
     border-radius: 0.5em;
     padding-top: 1em;
@@ -34,14 +39,21 @@
     margin-top: 1em;
     font-size: 1.2em;
     text-transform: uppercase;
-      text-align: center;
-      padding-bottom: 0.5em;
+    text-align: center;
+    padding-bottom: 0.5em;
 }
 
-.profile .user  h3,
-.profile .user  h4,
+.profile .user h3,
+.profile .user h4,
 .profile .user p {
     padding-bottom: 1em;
+}
+
+.profile .info .media {
+    padding: 0.5em;
+    width: 8em;
+    height: auto;
+    overflow: hidden;
 }
 
 .profile .added .books .info {
@@ -52,8 +64,7 @@
     display: flex;
     flex-direction: row;
     gap: 2em;
-    margin:1em
-
+    margin: 1em
 }
 
 .profile .info .media {
@@ -61,7 +72,7 @@
     width: 8em;
     height: auto;
     overflow: hidden;
-      
+
 }
 
 .profile .info .content h3,
@@ -78,6 +89,7 @@
     text-decoration: none;
     color: black;
 }
+
 .profile .more-info {
     margin-top: 1em;
 }

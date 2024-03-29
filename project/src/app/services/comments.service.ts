@@ -28,6 +28,12 @@ export class CommentsService {
     const currentComments = this.commentsData$$.getValue();
     this.commentsData$$.next([...currentComments, newComment])
   }
+
+  postComment(newComment: Comment){
+    const { apiUrl } = environment;
+    return this.http.post<Comment>(`${apiUrl}/data/posts`, newComment)
+  }
+
     
   
 }

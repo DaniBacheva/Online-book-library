@@ -2,12 +2,10 @@
     <div class="container">
         <h2>All Books</h2>
         <div class="catalog">
-           
-     
-            <article *ngFor="let book of books$ | async"  class="catalog-card">
+
+            <article *ngFor="let book of books$ | async" class="catalog-card">
                 <div class="media">
-                    <img
-                        src="{{book.imageUrl}}">
+                    <img src="{{book.imageUrl}}">
                 </div>
 
                 <div class="content">
@@ -22,8 +20,6 @@
                 </div>
 
             </article>
-
-                 </div>
+        </div>
     </div>
 </section>
-

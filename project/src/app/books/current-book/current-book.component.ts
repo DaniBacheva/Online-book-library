@@ -17,19 +17,11 @@ import { UserService } from 'src/app/user/user.service';
 })
 export class CurrentBookComponent implements OnInit {
   book: Book | undefined;
- isOwner: boolean = false;
-
+  isOwner: boolean = false;
   allSubscribers: Subscriber[] = [];
   subscriberforCurrentBook: Subscriber[] = [];
- // subscribers: Subscriber[] = [];
   hasSubscribed: boolean = false;
-
   currentBookComments: Comment[] = [];
-  //newComment: Comment | undefined = undefined;
-  //comment: Comment | undefined = undefined;
-  //allComments: Comment[] = [];
-  //comments: Comment[] = [];
-  //commentText: string = '';
 
   constructor(
     private apiService: ApiService,
@@ -51,13 +43,18 @@ export class CurrentBookComponent implements OnInit {
 
   getBookById(): void {
     const id = this.activatedRoute.snapshot.params['bookId'];
-    this.apiService.getOneBook(id).subscribe((book) => {
+    this.apiService.getOneBook(id).subscribe({
+      next:(book) => {
       this.book = book;
       console.log(book);
 
       const userId = localStorage.getItem('userId');
       this.isOwner = book._ownerId === userId
       console.log(this.isOwner);
+      },
+      error: (error) => {
+        console.log('Error', error)
+      }
     })
   }
 
@@ -65,18 +62,18 @@ export class CurrentBookComponent implements OnInit {
     const bookId = this.activatedRoute.snapshot.params['bookId'];
 
     this.commentService.getComments();
-    this.commentService.comments$.subscribe((comments) => {
-    //  console.log(comments)
-     // if (bookId) {
-        console.log(bookId)
-        this.currentBookComments = comments.filter(comment => comment.bookId === bookId);
-        console.log(this.currentBookComments)
-   //   }
-   //   else {
-   //     this.currentBookComments = []
-   //   }
+    this.commentService.comments$.subscribe({
+      next:(comments) => {
+      console.log(bookId)
+      this.currentBookComments = comments.filter(comment => comment.bookId === bookId);
+      console.log(this.currentBookComments)
+      },
+      error: (error) => {
+        console.log('Error', error)
+      }
     })
   }
+
   commentAdd(form: NgForm): void {
     if (form.invalid) {
       return
@@ -90,28 +87,27 @@ export class CurrentBookComponent implements OnInit {
       username: userName ? userName : undefined,
     }
 
-  // if (bookId) {
-      this.apiService.postComment(newComment).subscribe({
-        next: (response) => {
-          form.resetForm();
-          this.commentService.addComment(response);
-        },
-        error: (error) => {
-          console.log('Error', error)
-        }
-      })
-   // }
+    this.commentService.postComment(newComment).subscribe({
+      next: (response) => {
+        form.resetForm();
+        this.commentService.addComment(response);
+      },
+      error: (error) => {
+        console.log('Error', error)
+      }
+    })
   }
 
   loadSubscribers() {
     const bookId = this.activatedRoute.snapshot.params['bookId'];
-    console.log(bookId)
+    console.log(bookId);
     const userId = localStorage.getItem('userId');
     this.subService.getSubscribers();
-    this.subService.subscribers$.subscribe((subscribers) => {
-      console.log(subscribers);
+    this.subService.subscribers$.subscribe({
+      next: (subscribers) => {
 
-  //    if (bookId) {
+        console.log(subscribers);
+
         this.allSubscribers = subscribers.filter(subscriber => subscriber.bookId === bookId)
         console.log(this.allSubscribers)
         this.subscriberforCurrentBook = this.allSubscribers.filter(subscriber => subscriber.userId === userId);
@@ -123,8 +119,11 @@ export class CurrentBookComponent implements OnInit {
         else {
           this.hasSubscribed = false;
         }
-   //   }
-    })
+      },
+      error: (error) => {
+        console.log('Error', error)
+      }
+    }) 
   }
 
   addSubscribers() {
@@ -135,17 +134,15 @@ export class CurrentBookComponent implements OnInit {
       userId: userId!,
       bookId: bookId
     };
-//    if (bookId) {
-      this.apiService.addSubscribersToBook(newSubscriber).subscribe({
-        next: (response) => {
-          this.subService.addSubscriber(response);
-        },
-        error: (error) => {
-          console.log('Error', error)
-        }
-      })
-    }
-//  }
+    this.subService.addSubscribersToBook(newSubscriber).subscribe({
+      next: (response) => {
+        this.subService.addSubscriber(response);
+      },
+      error: (error) => {
+        console.log('Error', error)
+      }
+    })
+  }
 }
 
 
