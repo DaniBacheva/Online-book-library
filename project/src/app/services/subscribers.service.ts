@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 
 import { environment } from '../../environments/environment.development';
 import { Subscriber } from 'src/app/types/subscriber';
+import { Book } from 'src/app/types/book';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,12 @@ export class SubscriberService {
     const { apiUrl } = environment;
     const queryString = encodeURIComponent(`userId = "${userId}"`)
     return this.http.get<Subscriber[]>(`${apiUrl}/data/subscribers?where=${queryString}`)
-
   }
+
+  getBookSubscribers(bookId: string) {
+    const { apiUrl } = environment;
+    const queryString = encodeURIComponent(`bookId = "${bookId}"`)
+    return this.http.get<Subscriber[]>(`${apiUrl}/data/subscribers?where=${queryString}`)
+  } 
   
 }

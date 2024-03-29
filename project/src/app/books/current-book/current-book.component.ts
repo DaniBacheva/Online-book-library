@@ -44,13 +44,13 @@ export class CurrentBookComponent implements OnInit {
   getBookById(): void {
     const id = this.activatedRoute.snapshot.params['bookId'];
     this.apiService.getOneBook(id).subscribe({
-      next:(book) => {
-      this.book = book;
-      console.log(book);
+      next: (book) => {
+        this.book = book;
+        console.log(book);
 
-      const userId = localStorage.getItem('userId');
-      this.isOwner = book._ownerId === userId
-      console.log(this.isOwner);
+        const userId = localStorage.getItem('userId');
+        this.isOwner = book._ownerId === userId
+        console.log(this.isOwner);
       },
       error: (error) => {
         console.log('Error', error)
@@ -61,12 +61,22 @@ export class CurrentBookComponent implements OnInit {
   loadComments(): void {
     const bookId = this.activatedRoute.snapshot.params['bookId'];
 
-    this.commentService.getComments();
-    this.commentService.comments$.subscribe({
-      next:(comments) => {
-      console.log(bookId)
-      this.currentBookComments = comments.filter(comment => comment.bookId === bookId);
-      console.log(this.currentBookComments)
+    //this.commentService.getComments();
+    //this.commentService.comments$.subscribe({
+    //  next:(comments) => {
+    // console.log(bookId)
+    //  this.currentBookComments = comments.filter(comment => comment.bookId === bookId);
+    //   console.log(this.currentBookComments)
+    //   },
+    //   error: (error) => {
+    //    console.log('Error', error)
+    //  }
+    // })
+
+    this.commentService.getCommentsForBook(bookId!).subscribe({
+      next: (comments) => {
+        console.log(comments);
+        this.currentBookComments = comments
       },
       error: (error) => {
         console.log('Error', error)
@@ -102,14 +112,11 @@ export class CurrentBookComponent implements OnInit {
     const bookId = this.activatedRoute.snapshot.params['bookId'];
     console.log(bookId);
     const userId = localStorage.getItem('userId');
-    this.subService.getSubscribers();
-    this.subService.subscribers$.subscribe({
+    this.subService.getBookSubscribers(bookId).subscribe({
       next: (subscribers) => {
-
-        console.log(subscribers);
-
-        this.allSubscribers = subscribers.filter(subscriber => subscriber.bookId === bookId)
-        console.log(this.allSubscribers)
+        this.allSubscribers = subscribers;
+        console.log(this.allSubscribers);
+        
         this.subscriberforCurrentBook = this.allSubscribers.filter(subscriber => subscriber.userId === userId);
         console.log(this.subscriberforCurrentBook.length);
 
@@ -123,7 +130,7 @@ export class CurrentBookComponent implements OnInit {
       error: (error) => {
         console.log('Error', error)
       }
-    }) 
+    })
   }
 
   addSubscribers() {

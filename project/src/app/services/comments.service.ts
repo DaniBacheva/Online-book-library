@@ -34,6 +34,12 @@ export class CommentsService {
     return this.http.post<Comment>(`${apiUrl}/data/posts`, newComment)
   }
 
+  getCommentsForBook( bookId: string) {
+    const { apiUrl } = environment;
+    const queryString = encodeURIComponent(`bookId = "${bookId}"`)
+    return this.http.get<Comment[]>(`${apiUrl}/data/posts?where=${queryString}`)
+    
+  }
     
   
 }

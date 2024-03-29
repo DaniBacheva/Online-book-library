@@ -57,7 +57,6 @@ export class ProfileComponent implements OnInit {
         console.log('Error', error)
       }
     })
-
   }
 
   getOwnBooks(): void {
