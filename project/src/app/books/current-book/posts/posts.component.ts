@@ -62,11 +62,11 @@ export class PostsComponent implements OnInit, OnDestroy {
     if (form.invalid) {
       return
     }
-    let { commentText } = form.value;
+    let { text } = form.value;
     const userName = localStorage.getItem('username');
     const bookId = this.activatedRoute.snapshot.params['bookId'];
     const newComment: Comment = {
-      commentText: commentText,
+      commentText: text,
       bookId: bookId,
       username: userName ? userName : undefined,
     }
