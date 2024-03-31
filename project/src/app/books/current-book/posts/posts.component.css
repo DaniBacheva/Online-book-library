@@ -10,7 +10,7 @@
   }
 
 .post-list p {
-    padding: 1em;
+    padding: 0.5em;
 }
 
 .post-list i {
@@ -25,20 +25,25 @@
     padding: 1em 0 0.5em;
 }
 
-.add-comment .postText button {
-      color: rgb(102, 80, 80);
+.add-comment .postText .btn {
+      color: rgb(57, 12, 203);
     margin: 0.5em 1em;
-    padding: 0.2em 1em;
-    border: 1px solid;
+    padding: 0.5em 1.5em;
+    border: 1px solid rgb(80, 63, 36);
     border-radius: 0.3em;
-    background-color: white;
- }
+    font-weight: bold;
+    cursor: pointer;
+    }
+
+    .add-comment .postText .btn:hover {
+        color:rgb(136, 11, 28);
+
+    }
 
  .add-book  {
     width: 21em;
     height: 2em;
     margin-top: 2em;
-
     color: black;
     margin-bottom: 1.5em;
     padding: 0.2em 1em;

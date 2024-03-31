@@ -1,8 +1,8 @@
 .profile .container {
     display: flex;
     flex-direction: row;
-    gap: 5em
-}
+    gap: 5em;
+  }
 
 .profile .user {
     flex: 1 1 30%;

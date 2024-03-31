@@ -15,8 +15,8 @@
                     <p class="error" *ngIf="inputText.errors?.['required']">Text is required!</p>
                 </ng-container>
 
-                <button type="submit" [disabled]="form.invalid"
-                    [style]="{backgroundColor: form.invalid ? 'grey' : 'blue'}" id="btn">Post</button>
+                <button class="btn" type="submit" [disabled]="form.invalid"
+                    [style]="{backgroundColor: form.invalid ? 'lightgrey' : 'blanchedalmond'}" id="btn">Post</button>
             </form>
         </div>
     </div>

@@ -1,6 +1,6 @@
 .catalogPage {
 
-    background-color: rgb(237, 251, 251);
+    background-color:#f5f0f6;
 }
 
 .catalogPage h2 {
@@ -28,6 +28,7 @@
     border-radius: 0.5em;
     padding: 1em;
     align-items: center;
+    background-color: whitesmoke;
 }
 
 .catalog .catalog-card .media img {
@@ -60,8 +61,14 @@
     align-self: center;
     border: 1px solid black;
     border-radius: 0.5em;
-    padding: 0.1em 0.5em;
-    color: black;
+    padding: 0.1em 0.8em;
     text-decoration: none;
     font-weight: bold;
+    color:white;
+    background-color: rgb(77, 77, 136);
+}
+
+.catalog .catalog-card .button a:hover{
+    color:rgb(77, 77, 136);
+    background-color: white;
 }

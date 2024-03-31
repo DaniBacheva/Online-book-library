@@ -53,8 +53,16 @@
     border: 1px solid black;
     border-radius: 0.3em;
     text-decoration: none;
-    background-color: rgb(180, 240, 178);
+    color:white;
+    background-color: rgb(77, 77, 136);
     padding: 0.3em 1em;
+    font-weight: bold;
+}
+
+.details-description .buttons a:hover,
+.details-description .buttons button:hover {
+    color:rgb(77, 77, 136);
+    background-color: lightgray;
 }
 
 .details-description .buttons button i {
