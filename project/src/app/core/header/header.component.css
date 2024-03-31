@@ -1,5 +1,5 @@
 header {
-    background-color: #aaa;
+    background-color: #ccc;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,12 +29,19 @@ header nav li {
 
 header nav li a {
     text-decoration: none;
-    color: white;
+    color: rgb(10, 33, 102);
     text-transform: uppercase;
+    text-decoration: solid;
+    font-weight: bold;
 }
+
+header nav li a:hover{
+    color: white;
+}
+
 header nav li:last-child {
     text-transform: uppercase;
-    color: white;
+    color: whitesmoke;
     padding: 0 0.5em;
     cursor: pointer;
 }

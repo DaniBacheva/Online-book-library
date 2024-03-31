@@ -16,39 +16,26 @@
             </div>
             <div class="details-description">
                 <p>{{book?.moreInfo}}</p>
-               <div class="buttons">
+                <div class="buttons">
                     <ng-container *ngIf="isLoggedIn">
                         <ng-container *ngIf="isOwner">
-                        <a routerLink="/books/{{book?._id}}/edit-book">Edit</a>
-                        <a routerLink="/books/{{book?._id}}/delete-book">Delete</a>
+                            <a routerLink="/books/{{book?._id}}/edit-book">Edit</a>
+                            <a routerLink="/books/{{book?._id}}/delete-book">Delete</a>
                         </ng-container>
                         <ng-container *ngIf="!isOwner">
-                          <p *ngIf="hasSubscribed"  class="downloaded">You've already downloaded this book!</p>
-                        <button *ngIf="!hasSubscribed"   (click)="addSubscribers()"><span><i class="fa-solid fa-download"></i></span>Download</button>
+                            <p *ngIf="hasSubscribed" class="downloaded">You've already downloaded this book!</p>
+                            <button *ngIf="!hasSubscribed" (click)="addSubscribers()"><span><i
+                                        class="fa-solid fa-download"></i></span>Download</button>
                         </ng-container>
                     </ng-container>
-                    <a routerLink="/books">Back</a>          
+                    <a routerLink="/books">Back</a>
                 </div>
             </div>
         </div>
 
         <div class="posts">
-            <h3>Recent post:</h3>
-            <div class="post-list" *ngFor="let post of currentBookComments">
-                <p class="userId"><span>{{post.username}}</span> posted on {{post._createdOn | date}}</p>
-                <p><span><i class="fa-regular fa-comment"></i></span>{{post?.commentText}}</p>
-            </div>
-            <div class="add-comment" *ngIf="isLoggedIn">
-                <p>What do you think?</p>
-                <div class="postText">
-                    <form #form="ngForm" (ngSubmit)="commentAdd(form)">
-                        <textarea name="commentText" id="comment" cols="50" rows="5" ngModel required
-                            #inputText="ngModel">
-                    </textarea>
-                        <input type="submit" value="Post">
-                    </form>
-                </div>
-            </div>
+            <app-posts/>
         </div>
+
     </div>
 </section>

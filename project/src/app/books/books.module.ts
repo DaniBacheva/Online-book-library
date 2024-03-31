@@ -7,6 +7,7 @@ import { BooksRoutingModule } from './books-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewBookComponent } from './new-book/new-book.component';
 import { SharedModule } from '../shared/shared.module';
+import { PostsComponent } from './current-book/posts/posts.component';
 
 
 
@@ -15,7 +16,8 @@ import { SharedModule } from '../shared/shared.module';
     BookListComponent,
     CurrentBookComponent,
     EditBookComponent,
-    NewBookComponent
+    NewBookComponent,
+    PostsComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { SharedModule } from '../shared/shared.module';
     BookListComponent,
     NewBookComponent,
     CurrentBookComponent,
-    EditBookComponent
+    EditBookComponent,
+    PostsComponent
 
   ]
 })

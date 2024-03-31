@@ -70,38 +70,3 @@ padding-right: 1em;
     padding: 0.3em 0.8em;
 }
 
-.posts h3 {
-    padding-top: 1em;
-}
-
-.post-list {
-    border: 1px solid black;
-    border-radius: 0.5em;
-    background-color: #eee;
-    margin-top: 1em;
-  }
-
-.post-list p {
-    padding: 1em;
-}
-
-.post-list i {
-    padding-right: 1em;
-}
-
-.post-list .userId {
-    text-decoration: underline;
-}
-
-.add-comment {
-    padding: 1em 0 0.5em;
-}
-
-.add-comment input {
-      color: rgb(102, 80, 80);
-    margin: 0.5em 1em;
-    padding: 0.2em 1em;
-    border: 1px solid;
-    border-radius: 0.3em;
- }
-

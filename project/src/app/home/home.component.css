@@ -1,6 +1,6 @@
 section .home {
     display: flex;
-}
+   }
 
 .hero-content {
     height: 40vh;
@@ -28,6 +28,14 @@ section .home {
     font-size: 1.5em;
     text-transform: uppercase;
       text-align: center;
+}
+
+.home .container {
+    background-color:#f5f0f6;
+    padding:0.5em 3em 2em;
+   
+    border: 1px solid black;
+    border-radius: 0.8em;
 }
 
 .home .lastest-books {
@@ -66,10 +74,18 @@ section .home {
     margin-top: 1em;
     border: 1px solid black;
     border-radius: 0.5em;
-    padding: 0.1em 0.5em;
-    text-decoration: none;
-    color: black;
+    padding: 0.1em 0.8em;
+    text-decoration:none;
+    font-weight: bold ;
+    color:white;
+    background-color: rgb(77, 77, 136);
 }
+
+.home .info .content a:hover {
+    color:rgb(77, 77, 136);
+    background-color: white;
+}
+
 .more-info {
     margin-top: 1em;
 }

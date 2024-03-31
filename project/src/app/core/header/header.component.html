@@ -14,7 +14,7 @@
       
             <li *ngIf="isLoggedIn"><a routerLink="/new-book">Add new book</a></li> 
             <li *ngIf="isLoggedIn"><a routerLink="/auth/profile">{{profileName}}` Profile</a></li>
-            <li *ngIf="isLoggedIn" (click)="logout()">Logout</li>
+            <li *ngIf="isLoggedIn"> <a href="#" (click)="logout()"> Logout</a></li>
             
         </ul>
     </nav>

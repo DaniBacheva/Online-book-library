@@ -1,0 +1,51 @@
+.posts h3 {
+    padding-top: 1em;
+}
+
+.post-list {
+    border: 1px solid black;
+    border-radius: 0.5em;
+    background-color: #eee;
+    margin-top: 1em;
+  }
+
+.post-list p {
+    padding: 1em;
+}
+
+.post-list i {
+    padding-right: 1em;
+}
+
+.post-list .userId {
+    text-decoration: underline;
+}
+
+.add-comment {
+    padding: 1em 0 0.5em;
+}
+
+.add-comment .postText button {
+      color: rgb(102, 80, 80);
+    margin: 0.5em 1em;
+    padding: 0.2em 1em;
+    border: 1px solid;
+    border-radius: 0.3em;
+    background-color: white;
+ }
+
+ .add-book  {
+    width: 21em;
+    height: 2em;
+    margin-top: 2em;
+
+    color: black;
+    margin-bottom: 1.5em;
+    padding: 0.2em 1em;
+}
+
+ .add-comment .postText p.error {
+    padding: 0.5em 0 0 0;
+    color: red;
+}
+

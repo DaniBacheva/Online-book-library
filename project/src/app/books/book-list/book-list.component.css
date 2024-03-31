@@ -1,7 +1,13 @@
+.catalogPage {
+
+    background-color: rgb(237, 251, 251);
+}
+
 .catalogPage h2 {
     font-size: 1.8em;
     text-align: center;
     padding: 1em 0;
+    
 }
 
 .catalog {
