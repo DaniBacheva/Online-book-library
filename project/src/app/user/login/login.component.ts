@@ -1,14 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy{
+
+  private subscription: Subscription = new Subscription();
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -19,7 +22,7 @@ export class LoginComponent {
     }
 
     const { email, password } = form.value;
-    this.userService.login(email, password).subscribe({
+    this.subscription = this.userService.login(email, password).subscribe({
       next: () => {
         this.router.navigate(['/books'])
       },
@@ -28,5 +31,8 @@ export class LoginComponent {
 
       }
     })
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
   }
 }

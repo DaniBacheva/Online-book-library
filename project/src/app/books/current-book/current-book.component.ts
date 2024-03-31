@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { ApiService } from 'src/app/services/api.service';
 import { SubscriberService } from 'src/app/services/subscribers.service';
@@ -13,13 +14,15 @@ import { UserService } from 'src/app/user/user.service';
   templateUrl: './current-book.component.html',
   styleUrls: ['./current-book.component.css']
 })
-export class CurrentBookComponent implements OnInit {
+export class CurrentBookComponent implements OnInit, OnDestroy {
   book: Book | undefined;
   isOwner: boolean = false;
   allSubscribers: Subscriber[] = [];
   subscriberforCurrentBook: Subscriber[] = [];
   hasSubscribed: boolean = false;
   currentBookComments: Comment[] = [];
+
+  private subscription: Subscription = new Subscription();
 
   constructor(
     private apiService: ApiService,
@@ -39,6 +42,8 @@ export class CurrentBookComponent implements OnInit {
 
   getBookById(): void {
     const id = this.activatedRoute.snapshot.params['bookId'];
+    
+    this.subscription.add(
     this.apiService.getOneBook(id).subscribe({
       next: (book) => {
         this.book = book;
@@ -51,14 +56,14 @@ export class CurrentBookComponent implements OnInit {
       error: (error) => {
         console.log('Error', error)
       }
-    })
+    }))
   }
-
  
   loadSubscribers() {
     const bookId = this.activatedRoute.snapshot.params['bookId'];
     console.log(bookId);
     const userId = localStorage.getItem('userId');
+    this.subscription.add(
     this.subService.getBookSubscribers(bookId).subscribe({
       next: (subscribers) => {
         this.allSubscribers = subscribers;
@@ -77,7 +82,7 @@ export class CurrentBookComponent implements OnInit {
       error: (error) => {
         console.log('Error', error)
       }
-    })
+    }))
   }
 
   addSubscribers() {
@@ -88,6 +93,7 @@ export class CurrentBookComponent implements OnInit {
       userId: userId!,
       bookId: bookId
     };
+    this.subscription.add(
     this.subService.addSubscribersToBook(newSubscriber).subscribe({
       next: (response) => {
         this.subService.addSubscriber(response);
@@ -95,7 +101,11 @@ export class CurrentBookComponent implements OnInit {
       error: (error) => {
         console.log('Error', error)
       }
-    })
+    }))
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
   }
 }
 

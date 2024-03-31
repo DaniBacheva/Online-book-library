@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { UserService } from '../user.service';
 import { passwordsMatch } from '../../shared/utils/passwordsMatch';
 import { emailValidator } from '../../shared/utils/email-validator'
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnDestroy{
+  private subscription: Subscription = new Subscription();
+
   form = this.fb.group({
     username: ["", [Validators.required, Validators.minLength(4)]],
     email: ["", [Validators.required, emailValidator()]],
@@ -38,8 +41,8 @@ export class RegisterComponent {
       passGroup: { password, rePassword } = {}
     } = this.form.value;
 
-    console.log(this.form.value)
-    this.userService.register(username!, email!, password!).subscribe({
+    //console.log(this.form.value)
+    this.subscription = this.userService.register(username!, email!, password!).subscribe({
       next: () => {
         console.log(this.form.value);
         this.router.navigate(['/books'])
@@ -48,5 +51,8 @@ export class RegisterComponent {
         console.error("Registration failed", error)
       }
     })
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
   }
 }

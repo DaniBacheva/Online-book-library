@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+import { BehaviorSubject, Subscription } from 'rxjs';
 
 import { environment } from '../../environments/environment.development';
 import { Subscriber } from 'src/app/types/subscriber';
@@ -9,19 +9,22 @@ import { Book } from 'src/app/types/book';
 @Injectable({
   providedIn: 'root'
 })
-export class SubscriberService {
+export class SubscriberService implements OnDestroy {
+  private subscription: Subscription = new Subscription();
 
     private subscribersData$$ = new BehaviorSubject<Subscriber[]>([]);
     subscribers$ = this.subscribersData$$.asObservable();
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { 
+
+  }
 
   getSubscribers(): void{
     const { apiUrl} = environment;
-    this.http.get<Subscriber[]>(`${apiUrl}/data/subscribers`).subscribe((subscribers => {
+    this.subscription=this.http.get<Subscriber[]>(`${apiUrl}/data/subscribers`).subscribe((subscribers => {
         this.subscribersData$$.next(subscribers);
     }))
-    
+   
   }
 
    addSubscriber( newSubscriber: Subscriber ) {
@@ -45,5 +48,9 @@ export class SubscriberService {
     const queryString = encodeURIComponent(`bookId = "${bookId}"`)
     return this.http.get<Subscriber[]>(`${apiUrl}/data/subscribers?where=${queryString}`)
   } 
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
+  }
   
 }

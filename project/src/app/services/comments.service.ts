@@ -1,14 +1,15 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 
 import { environment } from '../../environments/environment.development';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { Comment } from 'src/app/types/comment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CommentsService {
+export class CommentsService  implements OnDestroy{
+  private subscription: Subscription = new Subscription();
 
     private commentsData$$ = new BehaviorSubject<Comment[]>([]);
     comments$ = this.commentsData$$.asObservable();
@@ -18,11 +19,10 @@ export class CommentsService {
 
   getComments(): void{
     const { apiUrl} = environment;
-    this.http.get<Comment[]>(`${apiUrl}/data/posts`).subscribe((comments => {
+    this.subscription = this.http.get<Comment[]>(`${apiUrl}/data/posts`).subscribe((comments => {
         this.commentsData$$.next(comments);
     }))
-    
-  }
+      }
 
   addComment( newComment: Comment ) {
     const currentComments = this.commentsData$$.getValue();
@@ -40,6 +40,7 @@ export class CommentsService {
     return this.http.get<Comment[]>(`${apiUrl}/data/posts?where=${queryString}`)
     
   }
-    
-  
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
+  }
 }

@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -10,6 +11,8 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./new-book.component.css']
 })
 export class NewBookComponent {
+
+  private subscription: Subscription = new Subscription();
 
   constructor(private apiService: ApiService, private router: Router) { }
 
@@ -21,7 +24,7 @@ export class NewBookComponent {
     }
 
     const { title, author, genre, pages, imageUrl, moreInfo } = form.value;
-    this.apiService.createBook(title, author, genre, pages, imageUrl, moreInfo).subscribe({
+    this.subscription = this.apiService.createBook(title, author, genre, pages, imageUrl, moreInfo).subscribe({
       next:() => {
       console.log(form.value)
      this.router.navigate(['/books'])
@@ -30,5 +33,9 @@ export class NewBookComponent {
         console.log('Error', error)
       }
     })
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
   }
 }

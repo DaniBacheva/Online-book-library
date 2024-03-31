@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { CommentsService } from 'src/app/services/comments.service';
 import { Comment } from 'src/app/types/comment';
@@ -11,18 +12,19 @@ import { UserService } from 'src/app/user/user.service';
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css']
 })
-export class PostsComponent implements OnInit{
+export class PostsComponent implements OnInit, OnDestroy {
   currentBookComments: Comment[] = [];
+  private subscription: Subscription = new Subscription();
 
-  constructor (
+  constructor(
     private commentService: CommentsService,
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-       this.loadComments();
-    
+    this.loadComments();
+
   }
 
   get isLoggedIn(): boolean {
@@ -30,6 +32,7 @@ export class PostsComponent implements OnInit{
   }
 
   loadComments(): void {
+
     const bookId = this.activatedRoute.snapshot.params['bookId'];
 
     //this.commentService.getComments();
@@ -43,16 +46,16 @@ export class PostsComponent implements OnInit{
     //    console.log('Error', error)
     //  }
     // })
-
-    this.commentService.getCommentsForBook(bookId!).subscribe({
-      next: (comments) => {
-        console.log(comments);
-        this.currentBookComments = comments
-      },
-      error: (error) => {
-        console.log('Error', error)
-      }
-    })
+    this.subscription.add(
+      this.commentService.getCommentsForBook(bookId!).subscribe({
+        next: (comments) => {
+          console.log(comments);
+          this.currentBookComments = comments
+        },
+        error: (error) => {
+          console.log('Error', error)
+        }
+      }))
   }
 
   commentAdd(form: NgForm): void {
@@ -68,6 +71,7 @@ export class PostsComponent implements OnInit{
       username: userName ? userName : undefined,
     }
 
+    this.subscription.add(
     this.commentService.postComment(newComment).subscribe({
       next: (response) => {
         form.resetForm();
@@ -77,6 +81,9 @@ export class PostsComponent implements OnInit{
       error: (error) => {
         console.log('Error', error)
       }
-    })
+    }))
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
   }
 }
