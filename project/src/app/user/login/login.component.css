@@ -19,41 +19,41 @@ section .login .login-form {
     flex: 0 0 30%;
 }
 
-.login .login-form {
+.loginPage .login-form {
     color: black;
     margin: auto;
     margin-top: 4em;
     background-color: #ffeae7c6;
     border: 1px solid black;
-    border-radius: 1.2px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    border-radius: 0.5em;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 5px,
         rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
         rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.login .login-form h1 {
+ .login-form h1 {
     text-align: center;
     padding-top: 1em;
 }
 
-.login .login-form h4 {
+ .login-form h4 {
     margin-top: 0.8em;
     text-align: center;
 }
 
-.login .login-form form {
+ .login-form form {
     width: 22em;
     margin-left: 1.5em;
 }
 
-.login .login-form form label {
+ .login-form form label {
     display: flex;
     margin-top: 1.2em;
     margin-bottom: 1em;
 
 }
 
-.login .login-form form input {
+ .login-form form input {
     width: 22em;
     height: 1.8em;
     padding-left: 0.5em;
@@ -64,7 +64,7 @@ section .login .login-form {
    
 }
 
-.login .login-form button {
+.login-form button {
     width: 22em;
     height: 2.2em;
     margin-top: 2.5em;
@@ -75,17 +75,17 @@ section .login .login-form {
     border-radius: 0.3em;
 }
 
-.login .login-form p {
+.login-form p {
     text-align: center;
     padding: 1.5em 0;
 }
 
-.login .login-form p.error {
+.login-form p.error {
     padding: 0.5em 0 0 0;
     color: red;
 }
 
 
-.login .login-form p>a {
+.login-form p>a {
     color: black;
 }

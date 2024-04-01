@@ -1,4 +1,4 @@
-import { Injectable, OnDestroy, OnInit } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { User } from '../types/user';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
@@ -32,7 +32,7 @@ export class UserService implements OnDestroy {
 		const _id = localStorage.getItem('userId');
 
 		if (accessToken && email && username && _id) {
-		this.user$$.next({ username, email, _id, accessToken });
+			this.user$$.next({ username, email, _id, accessToken });
 		} else {
 			this.user$$.next(undefined);
 		}
@@ -41,7 +41,7 @@ export class UserService implements OnDestroy {
 	login(email: string, password: string) {
 		const { apiUrl } = environment;
 
-		return this.http.post<{ username: string, email: string,  _id: string, accessToken: string }>(`${apiUrl}/users/login`, { email, password })
+		return this.http.post<{ username: string, email: string, _id: string, accessToken: string }>(`${apiUrl}/users/login`, { email, password })
 			.pipe(
 				tap(res => {
 					localStorage.setItem('accessToken', res.accessToken);
@@ -61,7 +61,7 @@ export class UserService implements OnDestroy {
 	register(username: string, email: string, password: string) {
 		const { apiUrl } = environment;
 
-		return this.http.post<{username: string, email: string, _id: string, accessToken: string }>(`${apiUrl}/users/register`, { username, email, password })
+		return this.http.post<{ username: string, email: string, _id: string, accessToken: string }>(`${apiUrl}/users/register`, { username, email, password })
 			.pipe(
 				tap(res => {
 					localStorage.setItem('accessToken', res.accessToken);
@@ -73,8 +73,7 @@ export class UserService implements OnDestroy {
 						username: res.username,
 						_id: res._id,
 						accessToken: res.accessToken
-				});
-
+					});
 				})
 			);
 	}
@@ -91,7 +90,7 @@ export class UserService implements OnDestroy {
 
 	getProfile() {
 		return this.http.get<User>(`${environment.apiUrl}/users/me`)
-		.pipe(tap((user) => this.user$$.next(user)));
+			.pipe(tap((user) => this.user$$.next(user)));
 	}
 
 	ngOnDestroy(): void {
