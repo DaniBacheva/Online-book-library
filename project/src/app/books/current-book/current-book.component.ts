@@ -97,6 +97,7 @@ export class CurrentBookComponent implements OnInit, OnDestroy {
     this.subService.addSubscribersToBook(newSubscriber).subscribe({
       next: (response) => {
         this.subService.addSubscriber(response);
+        this.loadSubscribers()
       },
       error: (error) => {
         console.log('Error', error)

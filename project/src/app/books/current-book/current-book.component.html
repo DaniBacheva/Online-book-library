@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="details-description">
-                <p>{{book!.moreInfo | slice: 1000}}</p>
+                <p>{{book?.moreInfo }}</p>
                 <div class="buttons">
                     <ng-container *ngIf="isLoggedIn">
                         <ng-container *ngIf="isOwner">

@@ -1,77 +1,85 @@
- .add-book .container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-   }
+ .add-book .container {
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     align-items: center;
+ }
 
-.add-book .container .media {
-    flex: 0 0 55%;
-}
+ .add-book .container .media {
+     flex: 0 0 55%;
+ }
 
-.add-book .container .add-book {
-    flex: 0 0 55%;
-}
+ .add-book .container .add-book {
+     flex: 0 0 55%;
+ }
 
-.container .add-info {
-    color: black;
-    width: 23em;
-    height: auto;
-    margin: auto;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    background-color: #ffeae7c6;
-    border: 1px solid black;
-    border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
+ .container .add-info {
+     color: black;
+     width: 23em;
+     height: auto;
+     margin: auto;
+     margin-top: 1em;
+     margin-bottom: 1em;
+     background-color: #ffeae7c6;
+     border: 1px solid black;
+     border-radius: 20px;
+     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+ }
 
-.add-book .add-info h2 {
-    text-align: center;
-    padding-top: 1em;
-    color: black;
-}
+ .add-book .add-info h2 {
+     text-align: center;
+     padding-top: 1em;
+     color: black;
+ }
 
-.add-book .add-info form {
-    width: 19em;
-    margin-left: 1.2em;
-}
+ .add-book .add-info form {
+     width: 19em;
+     margin-left: 1.2em;
+ }
 
-.add-book .add-info form label {
-    display: flex;
-    margin-top: 1em;
-    margin-bottom: 0.3em;
-}
+ .add-book .add-info form label {
+     display: flex;
+     margin-top: 1em;
+     margin-bottom: 0.3em;
+ }
 
-.add-book .add-info form input,
-.add-book .add-info form textarea,
-.add-book .add-info input[type="submit"] {
-    width: 23em;
-    height: 1.8em;
-    padding-left: 0.6em;
-    border: none;
-    border: 1px solid gray;
-    border-radius: 0.3em;
-    outline: none;
-    background-color: whitesmoke;
-}
+ .add-book .add-info form input,
+ .add-book .add-info form textarea,
+ .add-book .add-info input[type="submit"] {
+     width: 23em;
+     height: 1.8em;
+     padding-left: 0.6em;
+     border: none;
+     border: 1px solid gray;
+     border-radius: 0.3em;
+     outline: none;
+     background-color: whitesmoke;
+ }
 
 
-.add-book .add-info form textarea {
-    height: 8em;
-    resize: none;
-}
+ .add-book .add-info form textarea {
+     height: 8em;
+     resize: none;
+ }
 
-.add-book .add-info button[type="submit"] {
-    width: 21em;
-    height: 2em;
-    margin-top: 2em;
-    background-color: white;
-    color: black;
-    margin-bottom: 1.5em;
-}
+ .add-book .add-info button[type="submit"] {
+     width: 21em;
+     height: 2em;
+     margin-top: 2em;
+     background-color: white;
+     color: rgb(38, 38, 40);
+     margin-bottom: 1.5em;
+     border-radius: 0.3em;
+     font-weight: bold;
+ }
 
-.add-book .add-info p.error {
-    padding: 0.5em 0 0 0;
-    color: red;
-}
+ .add-book .add-info button:hover {
+     color: rgb(136, 11, 28);
+     background-color: white;
+ }
+
+
+ .add-book .add-info p.error {
+     padding: 0.5em 0 0 0;
+     color: red;
+ }

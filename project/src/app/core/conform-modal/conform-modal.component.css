@@ -2,7 +2,7 @@
   padding: 5em 5em;
  }
 .modal {
-    background-color: antiquewhite;
+    background-color:#f5f0f6;
 }
 
 .modal h2 {
@@ -13,12 +13,13 @@
 .mainInfo {
     display: flex;
     gap: 3em;
-    padding:2em;
+    padding:2em 4em;
 }
 
 .media-details {
     padding: 1em;
     border: 1px solid black;
+    border-radius: 0.2em;
 }
 
 .media-details img {
@@ -35,23 +36,25 @@
     padding-top: 4em;
 }
 
-.buttons a {
+.buttons a,
+.buttons button  {
     margin: 0 2em;
     border: 1px solid black;
     border-radius: 0.3em;
     text-decoration: none;
-    background-color: rgb(180, 240, 178);
-    padding: 0.3em 1em;
-    color: black;
+    font-weight: bold;
+    color:white;
+    background-color: rgb(77, 77, 136);
+    padding: 0.5em 1.2em;
+   }
+.buttons a {
+    padding: 0.3em 1.1em;
 }
 
-.buttons button {
-    margin: 0 2em;
-    border: 1px solid black;
-    border-radius: 0.3em;
-    text-decoration: none;
-    background-color: rgb(180, 240, 178);
-    padding: 0.5em 1em;
-    color: black;
+
+.buttons button:hover,
+.buttons a:hover {
+    color:rgb(77, 77, 136);
+    background-color: whitesmoke;
 }
 

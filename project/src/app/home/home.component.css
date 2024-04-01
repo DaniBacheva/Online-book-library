@@ -33,7 +33,6 @@ section .home {
 .home .container {
     background-color:#f5f0f6;
     padding:0.5em 3em 2em;
-   
     border: 1px solid black;
     border-radius: 0.8em;
 }
@@ -51,11 +50,12 @@ section .home {
     border: 2px solid black;
     border-radius: 1em;
     padding: 1em;
-    flex: 1 1 25%;
+    flex: 0 0 25%;
     display: flex;
     flex-direction: row;
     gap: 2em;
     background-color: whitesmoke;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
 }
 

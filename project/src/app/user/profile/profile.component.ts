@@ -62,6 +62,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       next: (subscribers) => {
         console.log(subscribers);
         this.mySubBooks = subscribers;
+        
       },
       error: (error) => {
         console.log('Error', error)

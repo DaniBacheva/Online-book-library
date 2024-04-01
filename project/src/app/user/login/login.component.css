@@ -61,6 +61,7 @@ section .login .login-form {
     border: 1px solid gray;
     border-radius: 0.5em;
     outline: none;
+   
 }
 
 .login .login-form button {
@@ -69,7 +70,9 @@ section .login .login-form {
     margin-top: 2.5em;
     border: none;
     background-color: black;
-    color: white;
+    color:rgb(77, 77, 136);
+    font-weight: bold;
+    border-radius: 0.3em;
 }
 
 .login .login-form p {

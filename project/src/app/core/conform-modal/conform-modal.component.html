@@ -7,12 +7,12 @@
                 <img src="{{book?.imageUrl}}">
             </div>
             <div class="details-info">
-                <h2>Title: {{book?.title}}</h2>
-                <h3>Author:{{book?.author}}</h3>
-                <h3>Genre:{{book?.genre}}</h3>
+                <h2>{{book?.title | uppercase}}</h2>
+                <h3>Author: {{book?.author}}</h3>
+                <h3>Genre: {{book?.genre}}</h3>
                 <div class="buttons">
                     <button (click)="deleteHandler()">Delete</button>
-                    <a routerLink="/books/{{book?._id}}">Cancel</a>
+                    <a routerLink="/books/{{book?._id}}">Back</a>
                 </div>
             </div>
         </div>
