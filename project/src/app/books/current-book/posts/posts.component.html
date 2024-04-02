@@ -3,7 +3,7 @@
     <h3>Recent post:</h3>
     <div class="post-list" *ngFor="let post of currentBookComments">
         <p class="userId"><span>{{post.username}}</span> posted on {{post._createdOn | date}}</p>
-        <p><span><i class="fa-regular fa-comment"></i></span>{{post?.commentText}}</p>
+        <p><span><i class="fa-regular fa-comment"></i></span>{{post?.commentText| titlecase}}</p>
     </div>
     <div class="add-comment" *ngIf="isLoggedIn">
         <p>What do you think?</p>

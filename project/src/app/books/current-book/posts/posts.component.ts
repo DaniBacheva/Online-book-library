@@ -35,17 +35,6 @@ export class PostsComponent implements OnInit, OnDestroy {
 
     const bookId = this.activatedRoute.snapshot.params['bookId'];
 
-    //this.commentService.getComments();
-    //this.commentService.comments$.subscribe({
-    //  next:(comments) => {
-    // console.log(bookId)
-    //  this.currentBookComments = comments.filter(comment => comment.bookId === bookId);
-    //   console.log(this.currentBookComments)
-    //   },
-    //   error: (error) => {
-    //    console.log('Error', error)
-    //  }
-    // })
     this.subscription.add(
       this.commentService.getCommentsForBook(bookId!).subscribe({
         next: (comments) => {
