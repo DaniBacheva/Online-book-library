@@ -13,9 +13,10 @@ export class UserService implements OnDestroy {
 	public user$ = this.user$$.asObservable()
 
 	user: User | undefined
+
 	private subscription: Subscription = new Subscription();
 	get isLogged(): boolean {
-		return !!this.user$$.getValue();
+		return !!this.user;
 	}
 
 	constructor(private http: HttpClient) {

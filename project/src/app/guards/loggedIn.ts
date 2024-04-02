@@ -6,7 +6,7 @@ export const LoggedInGuard: CanActivateFn = () => {
     const router = inject(Router)
     const accessToken = localStorage.getItem('accessToken');
     if (accessToken != null) {
-        router.navigateByUrl('/404');
+        router.navigateByUrl('home');
         return false
 
     } else {
