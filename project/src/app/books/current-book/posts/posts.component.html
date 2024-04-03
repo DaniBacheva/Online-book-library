@@ -10,7 +10,7 @@
         <div class="postText">
             <form #form="ngForm" (ngSubmit)="commentAdd(form)">
                 <textarea name="text" id="text" cols="50" rows="5" ngModel required #inputText="ngModel">
-                                    </textarea>
+                </textarea>
                 <ng-container *ngIf="inputText.touched">
                     <p class="error" *ngIf="inputText.errors?.['required']">Text is required!</p>
                 </ng-container>

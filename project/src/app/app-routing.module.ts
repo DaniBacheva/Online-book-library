@@ -6,28 +6,25 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
-    path: '', 
+    path: '',
     pathMatch: 'full',
     redirectTo: '/home'
   },
   {
     path: 'home',
     component: HomeComponent
-  }, 
-  {
-    path: "auth",
-    loadChildren: ()=>import ('./user/user.module').then((m)=>m.UserModule)
   },
   {
     path: "auth",
-    loadChildren: ()=>import ('./user/user.module').then((m)=>m.UserModule)
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule)
   },
-
-  {path: 'error', component:ErrorComponent},
   {
-    path:'**', redirectTo:'/404'
+    path: 'error', component: ErrorComponent
   },
- {  path:'404', component: NotFoundComponent }
+  {
+    path: '**', redirectTo: '/404'
+  },
+  { path: '404', component: NotFoundComponent }
 ];
 
 @NgModule({

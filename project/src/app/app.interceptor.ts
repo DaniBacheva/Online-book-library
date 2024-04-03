@@ -1,12 +1,10 @@
-import { HTTP_INTERCEPTORS,  HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable, Provider } from "@angular/core";
 import { Router } from "@angular/router";
-import { Observable} from "rxjs";
+import { Observable } from "rxjs";
 import { catchError } from 'rxjs/operators'
 
 import { ErrorService } from "./core/error/error.service";
-
-const URL = "http://localhost://3030/users"
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
@@ -44,7 +42,7 @@ export class AppInterceptor implements HttpInterceptor {
                     this.errorService.setError(err);
                     this.router.navigate(['/error'])
                 }
-               return [err]
+                return [err]
             })
 
         )

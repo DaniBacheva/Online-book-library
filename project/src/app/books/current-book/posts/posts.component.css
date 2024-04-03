@@ -7,7 +7,7 @@
     border-radius: 0.5em;
     background-color: #eee;
     margin-top: 1em;
-  }
+}
 
 .post-list p {
     padding: 0.5em;
@@ -26,21 +26,21 @@
 }
 
 .add-comment .postText .btn {
-      color: rgb(57, 12, 203);
+    color: rgb(57, 12, 203);
     margin: 0.5em 1em;
     padding: 0.5em 1.5em;
     border: 1px solid rgb(80, 63, 36);
     border-radius: 0.3em;
     font-weight: bold;
     cursor: pointer;
-    }
+}
 
-    .add-comment .postText .btn:hover {
-        color:rgb(136, 11, 28);
+.add-comment .postText .btn:hover {
+    color: rgb(136, 11, 28);
 
-    }
+}
 
- .add-book  {
+.add-book {
     width: 21em;
     height: 2em;
     margin-top: 2em;
@@ -49,8 +49,7 @@
     padding: 0.2em 1em;
 }
 
- .add-comment .postText p.error {
+.add-comment .postText p.error {
     padding: 0.5em 0 0 0;
     color: red;
 }
-

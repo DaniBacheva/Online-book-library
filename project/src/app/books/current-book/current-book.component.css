@@ -1,5 +1,4 @@
 .details .container {
-
     display: flex;
     gap: 2em
 }
@@ -49,13 +48,13 @@
     padding-top: 2em;
 }
 
- .details-description .buttons a,
- .details-description .buttons button{
+.details-description .buttons a,
+.details-description .buttons button {
     margin: 0 2em;
     border: 1px solid black;
     border-radius: 0.3em;
     text-decoration: none;
-    color:white;
+    color: white;
     background-color: rgb(77, 77, 136);
     padding: 0.3em 1em;
     font-weight: bold;
@@ -63,12 +62,12 @@
 
 .details-description .buttons a:hover,
 .details-description .buttons button:hover {
-    color:rgb(77, 77, 136);
+    color: rgb(77, 77, 136);
     background-color: lightgray;
 }
 
 .details-description .buttons button i {
-padding-right: 1em;
+    padding-right: 1em;
 }
 
 .details-description .buttons p {
@@ -76,10 +75,8 @@ padding-right: 1em;
     border: 1px solid black;
     border-radius: 0.3em;
     text-decoration: none;
-    color:rgb(77, 77, 136);
+    color: rgb(77, 77, 136);
     background-color: lightgray;
     padding: 0.3em 0.8em;
     font-weight: bold;
-    
 }
-

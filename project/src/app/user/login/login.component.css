@@ -50,7 +50,6 @@ section .login .login-form {
     display: flex;
     margin-top: 1.2em;
     margin-bottom: 1em;
-
 }
 
  .login-form form input {
@@ -61,8 +60,7 @@ section .login .login-form {
     border: 1px solid gray;
     border-radius: 0.5em;
     outline: none;
-   
-}
+  }
 
 .login-form button {
     width: 22em;
@@ -84,7 +82,6 @@ section .login .login-form {
     padding: 0.5em 0 0 0;
     color: red;
 }
-
 
 .login-form p>a {
     color: black;

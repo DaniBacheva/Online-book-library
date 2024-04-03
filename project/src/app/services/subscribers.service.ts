@@ -4,7 +4,7 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 
 import { environment } from '../../environments/environment.development';
 import { Subscriber } from 'src/app/types/subscriber';
-import { Book } from 'src/app/types/book';
+
 
 @Injectable({
   providedIn: 'root'

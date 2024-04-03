@@ -1,8 +1,9 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { User } from '../types/user';
+import { BehaviorSubject, Subscription, catchError, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
+
 import { environment } from '../../environments/environment.development';
+import { User } from '../types/user';
 
 @Injectable({
 	providedIn: 'root'
@@ -91,7 +92,13 @@ export class UserService implements OnDestroy {
 
 	getProfile() {
 		return this.http.get<User>(`${environment.apiUrl}/users/me`)
-			.pipe(tap((user) => this.user$$.next(user)));
+			.pipe(
+				tap(user => this.user$$.next(user)),
+				catchError((err) => {
+					this.user$$.next(undefined);
+					return [err];
+				})
+			)
 	}
 
 	ngOnDestroy(): void {

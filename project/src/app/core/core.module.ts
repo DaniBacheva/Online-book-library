@@ -6,8 +6,6 @@ import { RouterModule } from '@angular/router';
 import { ErrorComponent } from './error/error.component';
 import { ConformModalComponent } from './conform-modal/conform-modal.component';
 
-
-
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -15,7 +13,6 @@ import { ConformModalComponent } from './conform-modal/conform-modal.component';
     ErrorComponent,
     ConformModalComponent,
    
-
   ],
   imports: [
     CommonModule, RouterModule

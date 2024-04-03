@@ -4,19 +4,18 @@
 
         <div class="mainInfo">
             <div class="media-details">
-                <img src="{{book?.imageUrl}}">
+                <img src="{{(book$ | async)?.imageUrl}}">
             </div>
             <div class="details-info">
-                <h2>{{book?.title | uppercase}}</h2>
-                <h3>Author: {{book?.author}}</h3>
-                <h3>Genre: {{book?.genre}}</h3>
+                <h2>{{(book$ | async)?.title | uppercase}}</h2>
+                <h3>Author: {{(book$ | async)?.author}}</h3>
+                <h3>Genre: {{(book$ | async)?.genre}}</h3>
                 <div class="buttons">
                     <button (click)="deleteHandler()">Delete</button>
-                    <a routerLink="/books/{{book?._id}}">Back</a>
+                    <a routerLink="/books/{{(book$ | async)?._id}}">Back</a>
                 </div>
             </div>
         </div>
-
 
     </div>
 </div>
