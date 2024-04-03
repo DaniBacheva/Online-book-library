@@ -4,8 +4,6 @@ import { Injectable } from '@angular/core';
 import { Book } from '../types/book'
 import { environment } from '../../environments/environment.development';
 
-
-
 @Injectable({
   providedIn: 'root'
 })

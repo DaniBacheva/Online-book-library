@@ -14,10 +14,11 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   //myBooks: Book[] = [];
-  user: User | undefined;
+  //user: User | undefined;
   userId: string = '';
   mySubBooks: Subscriber[] = []
   myBooks$: Observable<Book[]>
+  me$: Observable<User>
 
   private subscription: Subscription = new Subscription();
 
@@ -28,60 +29,46 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     const userId = localStorage.getItem('userId');
     this.myBooks$ = this.apiService.getOwnBooks(userId!)
+    this.me$ = this.userService.getProfile()
   }
 
   ngOnInit(): void {
-    // this.getOwnBooks();
-    this.getProfile();
     this.loadSubscribers()
+    // this.getOwnBooks();
+    //this.getProfile();
   }
-
-  getProfile(): void {
-    this.subscription.add(
-    this.userService.getProfile().subscribe({
-      next: (user) => {
-        this.user = user;
-        console.log(user)
-      },
-      error: (error) => {
-        console.log('Error', error)
-      }
-    }))
-  };
 
   loadSubscribers(): void {
     const userId = localStorage.getItem('userId');
-    //this.subService.getSubscribers();
-    // this.subService.subscribers$.subscribe((subscribers) => {
-    // console.log(subscribers);
-    // this.mySubBooks = subscribers.filter(subscriber => subscriber.userId === userId)
-    //})
+
     console.log(userId)
-    this.subscription.add(
-    this.subService.mySubscriptions(userId!).subscribe({
+    this.subscription = this.subService.mySubscriptions(userId!).subscribe({
       next: (subscribers) => {
         console.log(subscribers);
         this.mySubBooks = subscribers;
-        
+
       },
       error: (error) => {
         console.log('Error', error)
       }
-    }))
+    })
   }
 
+  //getProfile(): void {
+  //  this.subscription.add(
+  //  this.userService.getProfile().subscribe({
+  //    next: (user) => {
+  //      this.user = user;
+  //     console.log(user)
+  //   },
+  //   error: (error) => {
+  //     console.log('Error', error)
+  //   }
+  //  }))
+  //};
+
+
   //getOwnBooks(): void {
-  // const userId = localStorage.getItem('userId')
-  //this.apiService.getAllBooks().subscribe({
-  //  next: (books) => {
-  //  this.myBooks = books.filter(book => book._ownerId === userId)
-  //  console.log(this.userId)
-  //  console.log(this.myBooks)
-  //},
-  // error: (error) =>{
-  //   console.log('Error', error)
-  // }
-  //  })
   // this.apiService.getOwnBooks(userId!).subscribe({
   //   next: (books) => {
   //     console.log(books);

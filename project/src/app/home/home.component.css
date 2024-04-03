@@ -41,7 +41,7 @@ section .home {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    gap: 1em;
+    
     margin-top: 1.5em;
 }
 
@@ -69,6 +69,10 @@ section .home {
 .home .info .content h3,
 .home .info .content p {
     padding-bottom: 0.7em;
+}
+
+.home .info .content h3 {
+    width: 10ch;
 }
 
 .home .info .content a {

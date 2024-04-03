@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { ApiService } from '../services/api.service';
 import { Book } from '../types/book';
-import { Subscription } from 'rxjs';
+import { Subscription, takeLast } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -14,8 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
   booksList: Book[] | null = null;
 
-  constructor(private apiService: ApiService,
-    private router: Router) { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.subscription = this.apiService.getAllBooks().subscribe({
@@ -23,6 +22,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.booksList = books.slice(-3);
         console.log(this.booksList)
       },
+
       error: (err) => {
         console.log(err);
       }

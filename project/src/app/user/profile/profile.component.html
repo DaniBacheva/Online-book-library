@@ -7,9 +7,9 @@
                 <img src="../../../assets/profile.png" />
             </div>
             <h3>Username:</h3>
-            <p> {{user?.username}}</p>
+            <p> {{(me$ | async)?.username}}</p>
             <h4>Email: </h4>
-            <p> {{user?.email}}</p>
+            <p> {{ (me$ | async)?.email}}</p>
             <p>Downloaded books: {{mySubBooks.length}}</p>
         </div>
 

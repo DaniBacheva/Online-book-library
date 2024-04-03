@@ -15,17 +15,15 @@ export class SubscriberService implements OnDestroy {
     private subscribersData$$ = new BehaviorSubject<Subscriber[]>([]);
     subscribers$ = this.subscribersData$$.asObservable();
 
-  constructor(private http:HttpClient) { 
+  constructor(private http:HttpClient) {  }
 
-  }
-
-  getSubscribers(): void{
-    const { apiUrl} = environment;
-    this.subscription=this.http.get<Subscriber[]>(`${apiUrl}/data/subscribers`).subscribe((subscribers => {
-        this.subscribersData$$.next(subscribers);
-    }))
+ // getSubscribers(): void{
+ //   const { apiUrl} = environment;
+ //   this.subscription=this.http.get<Subscriber[]>(`${apiUrl}/data/subscribers`).subscribe((subscribers => {
+//        this.subscribersData$$.next(subscribers);
+ //   }))
    
-  }
+ // }
 
    addSubscriber( newSubscriber: Subscriber ) {
     const currentSubscribers = this.subscribersData$$.getValue();

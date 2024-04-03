@@ -18,6 +18,11 @@ const routes: Routes = [
     path: "auth",
     loadChildren: ()=>import ('./user/user.module').then((m)=>m.UserModule)
   },
+  {
+    path: "auth",
+    loadChildren: ()=>import ('./user/user.module').then((m)=>m.UserModule)
+  },
+
   {path: 'error', component:ErrorComponent},
   {
     path:'**', redirectTo:'/404'
