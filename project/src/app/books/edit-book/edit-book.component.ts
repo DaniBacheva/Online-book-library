@@ -18,12 +18,12 @@ export class EditBookComponent implements OnInit , OnDestroy{
   private subscription: Subscription = new Subscription();
 
   form = this.fb.group({
-    title: ['', [Validators.required]],
-    author: ['', [Validators.required]],
-    genre: ['', [Validators.required]],
-    pages: [0, [Validators.required]],
-    imageUrl: ['', [Validators.required]],
-    moreInfo: ['', [Validators.required]]
+    title: ['', [Validators.required, Validators.minLength(5)]],
+    author: ['', [Validators.required, Validators.minLength(5)]],
+    genre: ['', [Validators.required, Validators.minLength(5)]],
+    pages: [0, [Validators.required, Validators.minLength(2)]],
+    imageUrl: ['', [Validators.required, Validators.minLength(5)]],
+    moreInfo: ['', [Validators.required, Validators.minLength(15)]]
   })
 
   constructor(private fb: FormBuilder,
@@ -67,7 +67,7 @@ export class EditBookComponent implements OnInit , OnDestroy{
       this.apiService.updateBook(formData, id).subscribe({
         next: () => {
           console.log(formData);
-          this.router.navigate(['/books'])
+          this.router.navigate(['/books/', id])
         },
         error: (err) => {
           console.log(err);

@@ -12,33 +12,51 @@
                 id="title" 
                 formControlName="title">
                 <p class="error" *ngIf="form.get('title')?.errors?.['required']">Title is required!</p>
+                <p class="error" *ngIf="form.get('title')?.errors?.['minlength']">
+                    Title should be at least 5 characters!
+                </p>
 
                 <label>Author:</label>
                 <input name="author" type="text" 
                 id="author" formControlName="author">
                 <p class="error" *ngIf="form.get('author')?.errors?.['required']">Author is required!</p>
+                <p class="error" *ngIf="form.get('author')?.errors?.['minlength']">
+                    Author should be at least 5 characters!
+                </p>
 
                 <label>Genre:</label>
                 <input name="genre" type="text"
                  id="genre" formControlName="genre">
                  <p class="error" *ngIf="form.get('genre')?.errors?.['required']">Genre is required!</p>
+                 <p class="error" *ngIf="form.get('genre')?.errors?.['minlength']">
+                    Genre should be at least 5 characters!
+                </p>
                 
                 <label>Pages:</label>
                 <input name="pages" type="number" 
                 id="pages" formControlName="pages">
                 <p class="error" *ngIf="form.get('pages')?.errors?.['required']">Pages is required!</p>
+                <p class="error" *ngIf="form.get('pages')?.errors?.['minlength']">
+                    Pages should be at least 10!
+                </p>
 
                 <label>Image:</label>
                 <input name="imageUrl" type="text"
                  id="image" placeholder="http://..."
                  formControlName="imageUrl">
                  <p class="error" *ngIf="form.get('imageUrl')?.errors?.['required']">Image is required!</p>
+                 <p class="error" *ngIf="form.get('imageUrl')?.errors?.['minlength']">
+                    Image URL should be at least 5 characters!
+                </p>
 
                 <label>More info:</label>
                 <textarea id="content" name="moreInfo"
                 formControlName="moreInfo"
                 ></textarea>
                 <p class="error" *ngIf="form.get('moreInfo')?.errors?.['required']">Description is required!</p>
+                <p class="error" *ngIf="form.get('moreInfo')?.errors?.['minlength']">
+                    Description should be at least 5 characters!
+                </p>
 
                 <button type="submit" id="btn"  [disabled]="form.invalid"
                 [style]="{backgroundColor: form.invalid ? 'lightgrey' : 'lightsteelblue'}">Edit</button>

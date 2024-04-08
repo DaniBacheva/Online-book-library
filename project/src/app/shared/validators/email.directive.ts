@@ -14,13 +14,13 @@ import { emailValidator } from '../utils/email-validator';
   ],
 })
 export class AppEmailDirective implements Validator, OnChanges {
-  @Input() appEmail: string[] = [];
+  @Input() appEmail: string = '';
   constructor() { }
 
   validator: ValidatorFn = () => null;
 
   validate(control: AbstractControl<any, any>): ValidationErrors | null {
-    console.log('control', control)
+    //console.log('control', control)
     return this.validator(control)
   }
 

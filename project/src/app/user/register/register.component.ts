@@ -1,11 +1,12 @@
 import { Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { UserService } from '../user.service';
 import { passwordsMatch } from '../../shared/utils/passwordsMatch';
 import { emailValidator } from '../../shared/utils/email-validator'
-import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-register',
@@ -22,9 +23,7 @@ export class RegisterComponent implements OnDestroy{
       password: ["", [Validators.required, Validators.minLength(6)]],
       rePassword: ["", [Validators.required]],
     },
-      {
-        validators: [passwordsMatch("password", "rePassword")]
-      }
+      {  validators: [passwordsMatch("password", "rePassword")] }
     ),
   })
 

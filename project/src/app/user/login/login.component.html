@@ -10,7 +10,7 @@
                 <form #form=ngForm (ngSubmit)="login(form)">
                     <label>Email</label>
                     <input type="text" placeholder="Email.." name="email" id="email" ngModel required
-                        #inputEmail="ngModel" [appEmail]="[]">
+                        #inputEmail="ngModel" appEmail="">
 
                     <ng-container *ngIf="inputEmail.touched">
                         <p class="error" *ngIf="inputEmail.errors?.['required']">Email is required!</p>

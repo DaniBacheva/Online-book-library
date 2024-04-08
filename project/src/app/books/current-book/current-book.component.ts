@@ -8,6 +8,7 @@ import { Book } from 'src/app/types/book';
 import { Comment } from 'src/app/types/comment';
 import { Subscriber } from 'src/app/types/subscriber';
 import { UserService } from 'src/app/user/user.service';
+import { SlicePipe } from 'src/app/shared/pipes/slice.pipe';
 
 @Component({
   selector: 'app-current-book',
